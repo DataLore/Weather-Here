@@ -76,6 +76,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cityLabel" destination="Trh-Ou-8Dk" id="BEM-pU-zz6"/>
+                        <outlet property="temperatureLabel" destination="m34-6C-KHO" id="Mxd-og-hBR"/>
+                        <outlet property="weatherIcon" destination="FyE-My-kNt" id="ZDH-UQ-fUc"/>
                         <segue destination="aSs-W1-82a" kind="presentation" identifier="toChangeCityName" id="VQt-gK-VTY"/>
                     </connections>
                 </viewController>
