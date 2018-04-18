@@ -30,7 +30,7 @@ class WeatherViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    //MARK:- Confgiure Methods
+    //MARK:- Confgiure
     private func configureKey() {
         guard let plist = Bundle.main.url(forResource: "Keys", withExtension: "plist") else {fatalError()}
         guard let storedKey = NSDictionary(contentsOf: plist) as? [String: Any] else {fatalError()}
@@ -45,7 +45,7 @@ class WeatherViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     
-    //MARK:- Weather API
+    //MARK:- API
     func fetchWeatherData(parameters: [String:String]) {
         
         var requestComponents = URLComponents()
@@ -109,6 +109,7 @@ class WeatherViewController: UIViewController {
         updateUI()
     }
 
+    //MARK:- UI
     func updateUI() {
         temperatureLabel.text = "\(weatherDataModel.temperature) °"
         windSpeedLabel.text = "\(weatherDataModel.windSpeed) kph"
@@ -118,7 +119,6 @@ class WeatherViewController: UIViewController {
 }
 
 extension WeatherViewController: CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
@@ -138,5 +138,11 @@ extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Manager Failed with \(error)")
         cityLabel.text = "Location Unavilable"
+    }
+}
+
+extension WeatherViewController: ChangeCityDelegate {
+    func changeCityName(city: String) {
+        fetchWeatherData(parameters: ["q": city])
     }
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ChangeCityDelegate {
+    func changeCityName(city: String)
+}
+
 class ChangeCityViewController: UIViewController {
 
     override func viewDidLoad() {
