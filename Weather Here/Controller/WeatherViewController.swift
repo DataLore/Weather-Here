@@ -109,7 +109,12 @@ class WeatherViewController: UIViewController {
         updateUI()
     }
 
-
+    func updateUI() {
+        temperatureLabel.text = "\(weatherDataModel.temperature) °"
+        windSpeedLabel.text = "\(weatherDataModel.windSpeed) kph"
+        weatherIcon.image = UIImage(named: weatherDataModel.wetherIconName)
+        cityLabel.text = weatherDataModel.city
+    }
 }
 
 extension WeatherViewController: CLLocationManagerDelegate {
