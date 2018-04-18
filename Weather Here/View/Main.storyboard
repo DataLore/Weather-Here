@@ -30,12 +30,18 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m34-6C-KHO" userLabel="Temperature">
-                                <rect key="frame" x="16" y="317" width="343" height="125"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELv-dg-lO4" userLabel="Temperature">
+                                <rect key="frame" x="16" y="252" width="343" height="118"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="Vm7-Vb-0uN"/>
+                                    <constraint firstAttribute="height" constant="118" id="LeQ-JP-MGM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="100"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 kph" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m34-6C-KHO" userLabel="Wind Speed">
+                                <rect key="frame" x="16" y="378" width="343" height="64"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="54"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -62,15 +68,18 @@
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Ze-gs-qga"/>
                             <constraint firstItem="FyE-My-kNt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A7j-qx-Mc1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Trh-Ou-8Dk" secondAttribute="trailing" constant="16" id="FKK-aN-6XR"/>
+                            <constraint firstItem="FyE-My-kNt" firstAttribute="top" secondItem="m34-6C-KHO" secondAttribute="bottom" constant="8" id="IEE-wy-sMG"/>
+                            <constraint firstItem="m34-6C-KHO" firstAttribute="top" secondItem="ELv-dg-lO4" secondAttribute="bottom" constant="8" id="N0F-T3-ffY"/>
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Shb-tH-UZr"/>
-                            <constraint firstItem="m34-6C-KHO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="U8D-Do-uVj"/>
                             <constraint firstItem="Trh-Ou-8Dk" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VQK-dI-MEB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tov-VU-eeJ" secondAttribute="trailing" constant="16" id="a6y-GA-J5u"/>
                             <constraint firstAttribute="bottom" secondItem="oh9-iS-CdF" secondAttribute="bottom" id="bix-p4-YIc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m34-6C-KHO" secondAttribute="trailing" constant="16" id="cc3-9u-ivG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ELv-dg-lO4" secondAttribute="trailing" constant="16" id="gnc-Ep-acU"/>
                             <constraint firstItem="Tov-VU-eeJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jvE-45-D5X"/>
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="opm-MN-qMu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m34-6C-KHO" secondAttribute="trailing" constant="16" id="q5s-tJ-wuk"/>
-                            <constraint firstItem="FyE-My-kNt" firstAttribute="top" secondItem="m34-6C-KHO" secondAttribute="bottom" constant="8" id="qqP-Hq-UXk"/>
+                            <constraint firstItem="ELv-dg-lO4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="t51-8j-z7P"/>
+                            <constraint firstItem="m34-6C-KHO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="uXD-Dh-2un"/>
                             <constraint firstItem="Trh-Ou-8Dk" firstAttribute="top" secondItem="FyE-My-kNt" secondAttribute="bottom" constant="8" id="y0k-pc-IRI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -79,6 +88,7 @@
                         <outlet property="cityLabel" destination="Trh-Ou-8Dk" id="BEM-pU-zz6"/>
                         <outlet property="temperatureLabel" destination="m34-6C-KHO" id="Mxd-og-hBR"/>
                         <outlet property="weatherIcon" destination="FyE-My-kNt" id="ZDH-UQ-fUc"/>
+                        <outlet property="windSpeedLabel" destination="m34-6C-KHO" id="INN-u5-8tw"/>
                         <segue destination="aSs-W1-82a" kind="presentation" identifier="toChangeCityName" id="VQt-gK-VTY"/>
                     </connections>
                 </viewController>

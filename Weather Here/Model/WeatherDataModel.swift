@@ -10,6 +10,7 @@ import UIKit
 class WeatherDataModel {
     
     var temperature: Int = 0
+    var windSpeed: Int = 0
     var condition: Int = 0
     var city: String = ""
     var wetherIconName: String = ""
@@ -17,49 +18,48 @@ class WeatherDataModel {
     /**
         Maps weather condition to icon given API condition code.
         - parameter condition: API condition code.
-        - returns: Icon name.
     */
-    func updateWeatherIcon(condition: Int) -> String {
+    func updateWeatherIconName() {
         
         switch (condition) {
         case 200...232 :
-            return "tstorm1"
+            wetherIconName = "tstorm1"
             
         case 300...321 :
-            return "lightRain"
+            wetherIconName = "lightRain"
             
         case 500...531 :
-            return "shower1"
+            wetherIconName = "shower1"
             
         case 600...622 :
-            return "snow1"
+            wetherIconName = "snow1"
             
         case 701...771 :
-            return "fog"
+            wetherIconName = "fog"
             
         case 781 :
-            return "tstorm2"
+            wetherIconName = "tstorm2"
             
         case 800 :
-            return "sunny"
+            wetherIconName = "sunny"
             
         case 801...802 :
-            return "cloudy"
+            wetherIconName = "cloudy"
             
         case 803...804 :
-            return "overcast"
+            wetherIconName = "overcast"
             
         case 900...902, 905...1000  :
-            return "tstorm2"
+            wetherIconName = "tstorm2"
             
         case 903 :
-            return "snow2"
+            wetherIconName = "snow2"
             
         case 904 :
-            return "sunny"
+            wetherIconName = "sunny"
             
         default :
-            return "unknown"
+            wetherIconName = "unknown"
         }
     }
 }
