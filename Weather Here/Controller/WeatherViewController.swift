@@ -135,7 +135,7 @@ class WeatherViewController: UIViewController {
     ///Updates the UI useing the data model.
     func updateUI() {
         temperatureLabel.text = "\(weatherDataModel.temperature) °"
-        windLabel.text = "\(weatherDataModel.windDirection) \(weatherDataModel.windSpeed) kph"
+        windLabel.text = "\(weatherDataModel.windSpeed) kph / \(weatherDataModel.windDirection)"
         weatherIcon.image = UIImage(named: weatherDataModel.wetherIconName)
         cityLabel.text = weatherDataModel.city
     }
@@ -159,7 +159,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Manager Failed with \(error)")
-        cityLabel.text = "Location Unavilable"
+        cityLabel.text = NSLocalizedString("lLocationUnavilable", comment: "")
     }
 }
 

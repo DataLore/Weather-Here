@@ -6,6 +6,7 @@
 */
 
 //WeatherView
+"lLocationUnavailable" = "Location Unavailable";
 
 //ChangeCityView
 "lWarningLabel" = "Please Enter a City Name Below";
