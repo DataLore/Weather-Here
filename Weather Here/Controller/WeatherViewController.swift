@@ -8,14 +8,17 @@
 import UIKit
 
 class WeatherViewController: UIViewController {
-
+    
+    @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var weatherIcon: UIImageView!
+    @IBOutlet var cityLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
