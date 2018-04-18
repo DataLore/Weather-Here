@@ -14,7 +14,7 @@
 		4A45980A2087DCEA009E780E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A45980C2087DCEA009E780E /* Localizable.strings */; };
 		4A45980D2087DD1B009E780E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A45980F2087DD1B009E780E /* Main.storyboard */; };
 		4A4598132087F861009E780E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4598122087F861009E780E /* Assets.xcassets */; };
-		4A9388B52087FBC10057E728 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9388B42087FBC10057E728 /* Info.plist */; };
+		4A9388B62087FC680057E728 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A9388B82087FC680057E728 /* Info.plist */; };
 		4AA7A729208770B40080E02D /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7A728208770B40080E02D /* WeatherDataModel.swift */; };
 		4AA7A72B208770EC0080E02D /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7A72A208770EC0080E02D /* ChangeCityViewController.swift */; };
 		4AA7A72D208770FF0080E02D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7A72C208770FF0080E02D /* WeatherViewController.swift */; };
@@ -51,7 +51,8 @@
 		4A45980B2087DCEA009E780E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4A45980E2087DD1B009E780E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A4598122087F861009E780E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4A9388B42087FBC10057E728 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A9388B72087FC680057E728 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
+		4A9388B92087FC820057E728 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		4AA7A728208770B40080E02D /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		4AA7A72A208770EC0080E02D /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		4AA7A72C208770FF0080E02D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +114,7 @@
 				4AA7A72E20877CD70080E02D /* Keys.plist */,
 				4A45980C2087DCEA009E780E /* Localizable.strings */,
 				4A4598122087F861009E780E /* Assets.xcassets */,
-				4A9388B42087FBC10057E728 /* Info.plist */,
+				4A9388B82087FC680057E728 /* Info.plist */,
 			);
 			path = "Weather Here";
 			sourceTree = "<group>";
@@ -268,7 +269,7 @@
 			files = (
 				4A45980A2087DCEA009E780E /* Localizable.strings in Resources */,
 				4AA7A72F20877CD70080E02D /* Keys.plist in Resources */,
-				4A9388B52087FBC10057E728 /* Info.plist in Resources */,
+				4A9388B62087FC680057E728 /* Info.plist in Resources */,
 				4A38430220875AA900155D88 /* LaunchScreen.storyboard in Resources */,
 				4A45980D2087DD1B009E780E /* Main.storyboard in Resources */,
 				4A4598132087F861009E780E /* Assets.xcassets in Resources */,
@@ -357,6 +358,15 @@
 				4A45980E2087DD1B009E780E /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4A9388B82087FC680057E728 /* Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A9388B72087FC680057E728 /* en */,
+				4A9388B92087FC820057E728 /* Base */,
+			);
+			name = Info.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
