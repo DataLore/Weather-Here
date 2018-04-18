@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Weather Here
+ 
+  Copyright © 2018 Emerald River. All rights reserved.
+*/
+
+//WeatherView
+
+//ChangeCityView
+"lWarningLabel" = "Please Enter a City Name Below";
+"lEnterCityNameTextField" = "Enter City Name";
+"lGetWeatherButton" = "Get Weather";

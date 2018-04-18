@@ -147,8 +147,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             locationManager.delegate = nil
             
-            print("Location: longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
-            
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.longitude)
             let locationData = ["lat": latitude, "lon": longitude]

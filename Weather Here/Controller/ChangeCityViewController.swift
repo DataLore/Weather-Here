@@ -15,12 +15,14 @@ class ChangeCityViewController: UIViewController {
 
     @IBOutlet var changeCityTextfield: UITextField!
     @IBOutlet var warningLabel: UILabel!
+    @IBOutlet var getWeatherButton: UIButton!
     
     var delegate: ChangeCityDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLabels()
+        configureButtons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +33,7 @@ class ChangeCityViewController: UIViewController {
     ///Triggers city name change.
     @IBAction func getWeatherButtonTapped(sender: UIButton) {
         guard let cityName = changeCityTextfield.text, cityName != "" else {
-            warningLabel.text = "Please enter a city name below"
+            warningLabel.text = NSLocalizedString("lWarningLabel", comment: "")
             return
         }
         
@@ -46,7 +48,10 @@ class ChangeCityViewController: UIViewController {
     
     //MARK:- Configure
     private func configureLabels() {
-        warningLabel.text = ""
+        changeCityTextfield.placeholder = NSLocalizedString("lEnterCityNameTextField", comment: "")
     }
     
+    private func configureButtons() {
+        getWeatherButton.setTitle(NSLocalizedString("lGetWeatherButton", comment: ""), for: .normal)
+    }
 }
