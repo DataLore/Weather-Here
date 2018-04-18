@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4A3842F820875AA800155D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3842F720875AA800155D88 /* AppDelegate.swift */; };
-		4A3842FD20875AA800155D88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3842FB20875AA800155D88 /* Main.storyboard */; };
 		4A3842FF20875AA900155D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3842FE20875AA900155D88 /* Assets.xcassets */; };
 		4A38430220875AA900155D88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A38430020875AA900155D88 /* LaunchScreen.storyboard */; };
 		4A38430D20875AA900155D88 /* Weather_HereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A38430C20875AA900155D88 /* Weather_HereTests.swift */; };
@@ -35,7 +34,6 @@
 /* Begin PBXFileReference section */
 		4A3842F420875AA800155D88 /* Weather Here.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Here.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3842F720875AA800155D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4A3842FC20875AA800155D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A3842FE20875AA900155D88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A38430120875AA900155D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A38430320875AA900155D88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +46,7 @@
 		4A3843262087637300155D88 /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		4A3843272087637300155D88 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		4A3843292087648700155D88 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
+		4A38432B2087654700155D88 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,10 +99,9 @@
 			children = (
 				4A3843282087648700155D88 /* Model */,
 				4A3843252087637300155D88 /* Controller */,
+				4A38432A208764D000155D88 /* View */,
 				4A3842F720875AA800155D88 /* AppDelegate.swift */,
 				4A3842FE20875AA900155D88 /* Assets.xcassets */,
-				4A3842FB20875AA800155D88 /* Main.storyboard */,
-				4A38430020875AA900155D88 /* LaunchScreen.storyboard */,
 				4A38430320875AA900155D88 /* Info.plist */,
 			);
 			path = "Weather Here";
@@ -142,6 +140,15 @@
 				4A3843292087648700155D88 /* WeatherDataModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4A38432A208764D000155D88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4A38432B2087654700155D88 /* Main.storyboard */,
+				4A38430020875AA900155D88 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,7 +257,6 @@
 			files = (
 				4A38430220875AA900155D88 /* LaunchScreen.storyboard in Resources */,
 				4A3842FF20875AA900155D88 /* Assets.xcassets in Resources */,
-				4A3842FD20875AA800155D88 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,14 +317,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4A3842FB20875AA800155D88 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4A3842FC20875AA800155D88 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4A38430020875AA900155D88 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
