@@ -45,6 +45,8 @@
 		4A38431320875AA900155D88 /* Weather HereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Weather HereUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A38431720875AA900155D88 /* Weather_HereUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather_HereUITests.swift; sourceTree = "<group>"; };
 		4A38431920875AA900155D88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A3843262087637300155D88 /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
+		4A3843272087637300155D88 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		4A3842F620875AA800155D88 /* Weather Here */ = {
 			isa = PBXGroup;
 			children = (
+				4A3843252087637300155D88 /* Controller */,
 				4A3842F720875AA800155D88 /* AppDelegate.swift */,
 				4A3842FE20875AA900155D88 /* Assets.xcassets */,
 				4A3842FB20875AA800155D88 /* Main.storyboard */,
@@ -120,6 +123,15 @@
 				4A38431920875AA900155D88 /* Info.plist */,
 			);
 			path = "Weather HereUITests";
+			sourceTree = "<group>";
+		};
+		4A3843252087637300155D88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A3843262087637300155D88 /* ChangeCityViewController.swift */,
+				4A3843272087637300155D88 /* WeatherViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,7 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-Here";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -454,7 +466,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-Here";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
