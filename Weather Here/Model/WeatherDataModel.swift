@@ -11,13 +11,14 @@ class WeatherDataModel {
     
     var temperature: Int = 0
     var windSpeed: Int = 0
-    var windDirection: String = ""
     var city: String = ""
-    var wetherIconName: String = ""
+    private(set) var windDirection: String = ""
+    private(set) var wetherIconName: String = ""
     
     /**
-        Maps weather condition to icon given API condition code.
-        - parameter condition: API condition code.
+     Maps weather condition to icon given API condition code.
+     
+     - parameter condition: API condition code.
     */
     func setWeatherIconName(_ condition: Int) {
         switch (condition) {
@@ -62,6 +63,11 @@ class WeatherDataModel {
         }
     }
     
+    /**
+     Maps weather condition to icon given API condition code.
+     
+     - parameter degrees: Degrees indicating direction.
+     */
     func setWindDirection(_ degrees: Double) {
         switch(degrees) {
         case 0...11.25, 348.76...360:
