@@ -35,16 +35,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELv-dg-lO4" userLabel="Temperature">
-                                <rect key="frame" x="16" y="316" width="343" height="118"/>
+                                <rect key="frame" x="16" y="246" width="343" height="118"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="118" id="LeQ-JP-MGM"/>
+                                    <constraint firstAttribute="height" constant="118" placeholder="YES" id="LeQ-JP-MGM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m34-6C-KHO" userLabel="Wind Speed">
-                                <rect key="frame" x="16" y="442" width="343" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m34-6C-KHO" userLabel="Wind">
+                                <rect key="frame" x="16" y="372" width="343" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" placeholder="YES" id="8R7-JV-OJP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="54"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -59,7 +62,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trh-Ou-8Dk" userLabel="City">
                                 <rect key="frame" x="16" y="688" width="343" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="c1V-9u-eDQ"/>
+                                    <constraint firstAttribute="height" constant="90" placeholder="YES" id="c1V-9u-eDQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="34"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,7 +95,7 @@
                         <outlet property="cityLabel" destination="Trh-Ou-8Dk" id="a3W-vw-kyW"/>
                         <outlet property="temperatureLabel" destination="ELv-dg-lO4" id="p0F-g7-iGs"/>
                         <outlet property="weatherIcon" destination="FyE-My-kNt" id="ZDH-UQ-fUc"/>
-                        <outlet property="windSpeedLabel" destination="m34-6C-KHO" id="INN-u5-8tw"/>
+                        <outlet property="windLabel" destination="m34-6C-KHO" id="rSb-v5-R4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

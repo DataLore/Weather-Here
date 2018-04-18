@@ -11,7 +11,7 @@ import CoreLocation
 class WeatherViewController: UIViewController {
     
     @IBOutlet var temperatureLabel: UILabel!
-    @IBOutlet var windSpeedLabel: UILabel!
+    @IBOutlet var windLabel: UILabel!
     @IBOutlet var weatherIcon: UIImageView!
     @IBOutlet var cityLabel: UILabel!
     
@@ -111,12 +111,14 @@ class WeatherViewController: UIViewController {
             if let windSpeed = wind["speed"] as? Double {
                 weatherDataModel.windSpeed = Int(windSpeed)
             }
+            if let windDirection = wind["deg"] as? Double {
+                weatherDataModel.setWindDirection(windDirection)
+            }
         }
         if let weather = results["weather"] as? [Any] {
             if let firstWeatherEntry = weather[0] as? [String: Any] {
                 if let condition = firstWeatherEntry["id"] as? Int {
-                    weatherDataModel.condition = condition
-                    weatherDataModel.updateWeatherIconName()
+                    weatherDataModel.setWeatherIconName(condition)
                 }
             }
         }
@@ -133,7 +135,7 @@ class WeatherViewController: UIViewController {
     ///Updates the UI useing the data model.
     func updateUI() {
         temperatureLabel.text = "\(weatherDataModel.temperature) °"
-        windSpeedLabel.text = "\(weatherDataModel.windSpeed) kph"
+        windLabel.text = "\(weatherDataModel.windDirection) \(weatherDataModel.windSpeed) kph"
         weatherIcon.image = UIImage(named: weatherDataModel.wetherIconName)
         cityLabel.text = weatherDataModel.city
     }
