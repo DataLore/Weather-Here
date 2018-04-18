@@ -72,10 +72,43 @@ class WeatherViewController: UIViewController {
                 }
                 return
             }
-            
+            self.processWeatherData(data)
         }
         task.resume()
     }
+    
+    func processWeatherData(_ data: Data) {
+        guard let resultsJSON = try? JSONSerialization.jsonObject(with: data, options: []), let results = resultsJSON as? [String: Any]  else {
+            print("Error Parsing Server Response")
+            cityLabel.text = "Weather Unavailable"
+            return
+        }
+        
+        if let main = results["main"] as? [String: Any] {
+            if let temperature = main["temp"] as? Double {
+                weatherDataModel.temperature = Int(temperature)
+            }
+        }
+        if let wind = results["wind"] as? [String: Any] {
+            if let windSpeed = wind["speed"] as? Double {
+                weatherDataModel.windSpeed = Int(windSpeed)
+            }
+        }
+        if let weather = results["weather"] as? [Any] {
+            if let firstWeatherEntry = weather[0] as? [String: Any] {
+                if let condition = firstWeatherEntry["id"] as? Int {
+                    weatherDataModel.condition = condition
+                    weatherDataModel.updateWeatherIconName()
+                }
+            }
+        }
+        if let city = results["name"] as? String {
+            weatherDataModel.city = city
+        }
+        
+        updateUI()
+    }
+
 
 }
 
