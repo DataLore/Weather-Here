@@ -47,6 +47,7 @@
 		4A38431920875AA900155D88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A3843262087637300155D88 /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		4A3843272087637300155D88 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		4A3843292087648700155D88 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +98,7 @@
 		4A3842F620875AA800155D88 /* Weather Here */ = {
 			isa = PBXGroup;
 			children = (
+				4A3843282087648700155D88 /* Model */,
 				4A3843252087637300155D88 /* Controller */,
 				4A3842F720875AA800155D88 /* AppDelegate.swift */,
 				4A3842FE20875AA900155D88 /* Assets.xcassets */,
@@ -132,6 +134,14 @@
 				4A3843272087637300155D88 /* WeatherViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		4A3843282087648700155D88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A3843292087648700155D88 /* WeatherDataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
