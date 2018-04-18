@@ -113,7 +113,9 @@ class WeatherViewController: UIViewController {
             weatherDataModel.city = city
         }
         
-        updateUI()
+        DispatchQueue.main.async {
+            self.updateUI()
+        }
     }
 
     //MARK:- UI

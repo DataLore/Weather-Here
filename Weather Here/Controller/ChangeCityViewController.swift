@@ -32,7 +32,8 @@ class ChangeCityViewController: UIViewController {
             warningLabel.text = "Please enter a city name below"
             return
         }
-        delegate?.changeCityName(city: changeCityTextfield.text!)
+        
+        delegate?.changeCityName(city: cityName)
         self.dismiss(animated: true, completion: nil)
     }
     
