@@ -14,16 +14,27 @@ class WeatherViewController: UIViewController {
     @IBOutlet var weatherIcon: UIImageView!
     @IBOutlet var cityLabel: UILabel!
     
+    let weatherURL = "http://api.openweathermap.org/data/2.5/weather"
     let dataModel = WeatherDataModel()
     let locationManager = CLLocationManager()
     
+    var apiKey: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureKey()
         configureLocationManager()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func configureKey() {
+        guard let plist = Bundle.main.url(forResource: "Keys", withExtension: "plist") else {fatalError()}
+        guard let storedKey = NSDictionary(contentsOf: plist) as? [String: Any] else {fatalError()}
+        guard let apiKey = storedKey["APIKey"] as? String else {fatalError()}
+        self.apiKey = apiKey
     }
     
     private func configureLocationManager() {
@@ -32,7 +43,7 @@ class WeatherViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
     }
-
+    
 }
 
 extension WeatherViewController: CLLocationManagerDelegate {

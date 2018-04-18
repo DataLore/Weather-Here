@@ -15,6 +15,7 @@
 		4AA7A729208770B40080E02D /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7A728208770B40080E02D /* WeatherDataModel.swift */; };
 		4AA7A72B208770EC0080E02D /* ChangeCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7A72A208770EC0080E02D /* ChangeCityViewController.swift */; };
 		4AA7A72D208770FF0080E02D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA7A72C208770FF0080E02D /* WeatherViewController.swift */; };
+		4AA7A72F20877CD70080E02D /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA7A72E20877CD70080E02D /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		4AA7A728208770B40080E02D /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		4AA7A72A208770EC0080E02D /* ChangeCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewController.swift; sourceTree = "<group>"; };
 		4AA7A72C208770FF0080E02D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		4AA7A72E20877CD70080E02D /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				4A3843252087637300155D88 /* Controller */,
 				4A38432A208764D000155D88 /* View */,
 				4A3842F720875AA800155D88 /* AppDelegate.swift */,
+				4AA7A72E20877CD70080E02D /* Keys.plist */,
 				4A3842FE20875AA900155D88 /* Assets.xcassets */,
 				4A38430320875AA900155D88 /* Info.plist */,
 			);
@@ -258,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AA7A72F20877CD70080E02D /* Keys.plist in Resources */,
 				4A38430220875AA900155D88 /* LaunchScreen.storyboard in Resources */,
 				4A3842FF20875AA900155D88 /* Assets.xcassets in Resources */,
 			);
