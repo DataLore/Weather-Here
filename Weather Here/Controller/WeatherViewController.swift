@@ -30,6 +30,13 @@ class WeatherViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toChangeCityName" {
+            let destinationVC = segue.destination as! ChangeCityViewController
+            destinationVC.delegate = self
+        }
+    }
+    
     //MARK:- Confgiure
     private func configureKey() {
         guard let plist = Bundle.main.url(forResource: "Keys", withExtension: "plist") else {fatalError()}

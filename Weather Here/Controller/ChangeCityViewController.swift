@@ -13,6 +13,8 @@ protocol ChangeCityDelegate {
 
 class ChangeCityViewController: UIViewController {
 
+    var delegate: ChangeCityDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
