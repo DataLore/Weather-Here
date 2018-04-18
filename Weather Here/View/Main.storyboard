@@ -29,6 +29,9 @@
                                 <state key="normal" image="switch">
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="aSs-W1-82a" kind="presentation" identifier="toChangeCityName" id="17P-XS-h46"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0°" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELv-dg-lO4" userLabel="Temperature">
                                 <rect key="frame" x="16" y="252" width="343" height="118"/>
@@ -89,7 +92,6 @@
                         <outlet property="temperatureLabel" destination="m34-6C-KHO" id="Mxd-og-hBR"/>
                         <outlet property="weatherIcon" destination="FyE-My-kNt" id="ZDH-UQ-fUc"/>
                         <outlet property="windSpeedLabel" destination="m34-6C-KHO" id="INN-u5-8tw"/>
-                        <segue destination="aSs-W1-82a" kind="presentation" identifier="toChangeCityName" id="VQt-gK-VTY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -116,6 +118,9 @@
                                 <state key="normal" image="back">
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="aSs-W1-82a" eventType="touchUpInside" id="wV9-G5-ogW"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8j-tO-Ffh">
                                 <rect key="frame" x="72" y="159" width="231" height="30"/>
@@ -129,10 +134,24 @@
                                 <state key="normal" title="Get Weather">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="getWeatherButtonTapped:" destination="aSs-W1-82a" eventType="touchUpInside" id="L3i-8J-dYY"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqz-0n-CiI">
+                                <rect key="frame" x="72" y="130" width="231" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Q2K-y3-Vrq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.1010496499" blue="0.13262694899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="pqz-0n-CiI" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" constant="72" id="1Fi-K4-ZdE"/>
+                            <constraint firstItem="pqz-0n-CiI" firstAttribute="top" secondItem="McV-qT-S32" secondAttribute="top" constant="86" id="1bh-FV-RSB"/>
                             <constraint firstItem="McV-qT-S32" firstAttribute="trailing" secondItem="3R9-J2-M5Q" secondAttribute="trailing" constant="72" id="2rr-XM-hJs"/>
                             <constraint firstAttribute="bottom" secondItem="tYz-jq-7Xq" secondAttribute="bottom" id="6SX-cN-NgA"/>
                             <constraint firstItem="QLM-HF-bUx" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" constant="16" id="EQ0-q7-6yP"/>
@@ -142,12 +161,17 @@
                             <constraint firstItem="tYz-jq-7Xq" firstAttribute="trailing" secondItem="McV-qT-S32" secondAttribute="trailing" id="ZPx-61-Ug0"/>
                             <constraint firstItem="r8j-tO-Ffh" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" constant="72" id="cYW-fN-5oF"/>
                             <constraint firstItem="tYz-jq-7Xq" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" id="fW5-Ig-mjH"/>
+                            <constraint firstItem="McV-qT-S32" firstAttribute="trailing" secondItem="pqz-0n-CiI" secondAttribute="trailing" constant="72" id="k2n-0T-IT0"/>
                             <constraint firstItem="McV-qT-S32" firstAttribute="trailing" secondItem="r8j-tO-Ffh" secondAttribute="trailing" constant="72" id="p88-mx-rBg"/>
+                            <constraint firstItem="r8j-tO-Ffh" firstAttribute="top" secondItem="pqz-0n-CiI" secondAttribute="bottom" constant="8" id="q4G-Ut-xpF"/>
                             <constraint firstItem="QLM-HF-bUx" firstAttribute="top" secondItem="McV-qT-S32" secondAttribute="top" id="vOu-kh-H7h"/>
-                            <constraint firstItem="r8j-tO-Ffh" firstAttribute="top" secondItem="McV-qT-S32" secondAttribute="top" constant="115" id="xbO-3T-Lk1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="McV-qT-S32"/>
                     </view>
+                    <connections>
+                        <outlet property="changeCityTextfield" destination="r8j-tO-Ffh" id="hbj-lh-pD7"/>
+                        <outlet property="warningLabel" destination="pqz-0n-CiI" id="3IS-LT-VzE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WM2-bL-IdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
