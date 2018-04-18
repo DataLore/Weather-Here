@@ -90,7 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="cityLabel" destination="Trh-Ou-8Dk" id="a3W-vw-kyW"/>
-                        <outlet property="temperatureLabel" destination="m34-6C-KHO" id="Mxd-og-hBR"/>
+                        <outlet property="temperatureLabel" destination="ELv-dg-lO4" id="p0F-g7-iGs"/>
                         <outlet property="weatherIcon" destination="FyE-My-kNt" id="ZDH-UQ-fUc"/>
                         <outlet property="windSpeedLabel" destination="m34-6C-KHO" id="INN-u5-8tw"/>
                     </connections>

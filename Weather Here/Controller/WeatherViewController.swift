@@ -53,6 +53,11 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK:- API
+    /**
+     Fetches weather data from the weather API.
+     
+     - parameter parameters: The parameters supplied to the API.
+     */
     func fetchWeatherData(parameters: [String:String]) {
         
         var requestComponents = URLComponents()
@@ -84,6 +89,11 @@ class WeatherViewController: UIViewController {
         task.resume()
     }
     
+    /**
+     Processes weather data for the data model.
+     
+     - parameter data: Response data from weather API call.
+     */
     func processWeatherData(_ data: Data) {
         guard let resultsJSON = try? JSONSerialization.jsonObject(with: data, options: []), let results = resultsJSON as? [String: Any]  else {
             print("Error Parsing Server Response")
@@ -91,6 +101,7 @@ class WeatherViewController: UIViewController {
             return
         }
         
+        //Could use the Swift 4 codable but the data required is minimal
         if let main = results["main"] as? [String: Any] {
             if let temperature = main["temp"] as? Double {
                 weatherDataModel.temperature = Int(temperature)
@@ -119,6 +130,7 @@ class WeatherViewController: UIViewController {
     }
 
     //MARK:- UI
+    ///Updates the UI useing the data model.
     func updateUI() {
         temperatureLabel.text = "\(weatherDataModel.temperature) °"
         windSpeedLabel.text = "\(weatherDataModel.windSpeed) kph"
@@ -127,6 +139,7 @@ class WeatherViewController: UIViewController {
     }
 }
 
+//MARK:- Location Manager Delegate
 extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
@@ -150,7 +163,13 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
+//MARK:- Change City Delegate
 extension WeatherViewController: ChangeCityDelegate {
+    /**
+     Calls the API with a new city name.
+     
+     - parameter city: The new city name to supply to the API.
+     */
     func changeCityName(city: String) {
         fetchWeatherData(parameters: ["q": city])
     }

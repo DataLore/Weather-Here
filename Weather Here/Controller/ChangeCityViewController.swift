@@ -27,6 +27,8 @@ class ChangeCityViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    //MARK:- Button Actions
+    ///Triggers city name change.
     @IBAction func getWeatherButtonTapped(sender: UIButton) {
         guard let cityName = changeCityTextfield.text, cityName != "" else {
             warningLabel.text = "Please enter a city name below"
@@ -37,10 +39,12 @@ class ChangeCityViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    ///Triggers navigation back to weather condtions.
     @IBAction func backButtonTapped(sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //MARK:- Configure
     private func configureLabels() {
         warningLabel.text = ""
     }
