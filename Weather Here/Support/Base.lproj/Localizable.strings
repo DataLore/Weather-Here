@@ -7,12 +7,10 @@
 
 //WeatherView
 "lLocationUnavailable" = "Location Unavailable";
+"lWeatherUnavailable" = "Weather Unavailable";
+"lConnectionError" = "Connection Error";
 
 //ChangeCityView
 "lWarningLabel" = "Please Enter a City Name Below";
 "lEnterCityNameTextField" = "Enter City Name";
 "lGetWeatherButton" = "Get Weather";
-
-//Info.plist
-"NSLocationWhenInUseUsageDescription" = "HELLO";
-

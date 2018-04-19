@@ -105,9 +105,7 @@ class WeatherViewController: UIViewController {
             guard let data = data, error == nil else {
                 let statusCode = (response as! HTTPURLResponse).statusCode
                 print(error?.localizedDescription ?? "\(statusCode) Connection Error")
-                DispatchQueue.main.async {
-                    self.cityLabel.text = "Connection Error"
-                }
+                self.updateUIError(NSLocalizedString("lConnectionError", comment: ""))
                 return
             }
             self.processWeatherData(data)
@@ -123,7 +121,7 @@ class WeatherViewController: UIViewController {
     func processWeatherData(_ data: Data) {
         guard let resultsJSON = try? JSONSerialization.jsonObject(with: data, options: []), let results = resultsJSON as? [String: Any]  else {
             print("Error Parsing Server Response")
-            cityLabel.text = "Weather Unavailable"
+            updateUIError(NSLocalizedString("lWeatherUnavailable", comment: ""))
             return
         }
         
@@ -152,18 +150,24 @@ class WeatherViewController: UIViewController {
             weatherDataModel.city = city
         }
         
-        DispatchQueue.main.async {
-            self.updateUI()
-        }
+        updateUI()
     }
 
     //MARK:- UI
     ///Updates the UI useing the data model.
     func updateUI() {
-        temperatureLabel.text = "\(weatherDataModel.temperature) °"
-        windLabel.text = "\(weatherDataModel.windSpeed) kph / \(weatherDataModel.windDirection)"
-        weatherIcon.image = UIImage(named: weatherDataModel.wetherIconName)
-        cityLabel.text = weatherDataModel.city
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = "\(self.weatherDataModel.temperature)°"
+            self.windLabel.text = "\(self.weatherDataModel.windSpeed) kph / \(self.weatherDataModel.windDirection)"
+            self.weatherIcon.image = UIImage(named: self.weatherDataModel.wetherIconName)
+            self.cityLabel.text = self.weatherDataModel.city
+        }
+    }
+    
+    func updateUIError(_ error: String) {
+        DispatchQueue.main.async {
+            self.cityLabel.text = error
+        }
     }
 }
 
@@ -186,7 +190,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Manager Failed with \(error)")
-        cityLabel.text = NSLocalizedString("lLocationUnavilable", comment: "")
+        updateUIError(NSLocalizedString("lLocationUnavilable", comment: ""))
     }
 }
 
@@ -203,18 +207,4 @@ extension WeatherViewController: ChangeCityDelegate {
     }
 }
 
-//MARK:- URLSession Dependancy Injection
-protocol URLSessionProtocol: class {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
-}
 
-protocol URLSessionDataTaskProtocol {
-    func resume()
-}
-
-extension URLSession: URLSessionProtocol {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
-        return ((dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTask) as URLSessionDataTaskProtocol)
-    }
-}
-extension URLSessionDataTask: URLSessionDataTaskProtocol { }

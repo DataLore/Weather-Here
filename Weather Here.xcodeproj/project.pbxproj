@@ -123,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				4A9388CC208813E00057E728 /* WeatherViewControllerTests.swift */,
-				4A9388C6208800000057E728 /* InfoPlist.strings */,
 				4A38430E20875AA900155D88 /* Info.plist */,
 			);
 			path = "Weather HereTests";
@@ -169,6 +168,7 @@
 			children = (
 				4AA7A72E20877CD70080E02D /* Keys.plist */,
 				4A45980C2087DCEA009E780E /* Localizable.strings */,
+				4A9388C6208800000057E728 /* InfoPlist.strings */,
 				4A9388C02087FED40057E728 /* Info.plist */,
 			);
 			path = Support;
