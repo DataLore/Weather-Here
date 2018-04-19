@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="Weather" customClass="WeatherViewController" customModule="Weather_Here" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weather" translatesAutoresizingMaskIntoConstraints="NO" id="oh9-iS-CdF" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tov-VU-eeJ" userLabel="Change City">
-                                <rect key="frame" x="309" y="44" width="50" height="50"/>
+                                <rect key="frame" x="254" y="20" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="DWY-6y-lFG"/>
                                     <constraint firstAttribute="height" constant="50" id="dDe-lk-iSm"/>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ELv-dg-lO4" userLabel="Temperature">
-                                <rect key="frame" x="16" y="221" width="343" height="118"/>
+                                <rect key="frame" x="16" y="11" width="288" height="118"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="118" placeholder="YES" id="LeQ-JP-MGM"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m34-6C-KHO" userLabel="Wind">
-                                <rect key="frame" x="16" y="347" width="343" height="70"/>
+                                <rect key="frame" x="16" y="137" width="288" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" placeholder="YES" id="8R7-JV-OJP"/>
                                 </constraints>
@@ -53,14 +53,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FyE-My-kNt" userLabel="Weather Icon">
-                                <rect key="frame" x="16" y="425" width="343" height="230"/>
+                                <rect key="frame" x="16" y="215" width="288" height="230"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="230" id="XV2-4t-ohD"/>
-                                    <constraint firstAttribute="width" constant="343" id="xgW-4s-Hjp"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Trh-Ou-8Dk" userLabel="City">
-                                <rect key="frame" x="16" y="663" width="343" height="90"/>
+                                <rect key="frame" x="16" y="453" width="288" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" placeholder="YES" id="c1V-9u-eDQ"/>
                                 </constraints>
@@ -74,6 +73,7 @@
                             <constraint firstItem="Trh-Ou-8Dk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2AD-5b-bhN"/>
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Ze-gs-qga"/>
                             <constraint firstItem="FyE-My-kNt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A7j-qx-Mc1"/>
+                            <constraint firstItem="FyE-My-kNt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DRO-hX-zlA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Trh-Ou-8Dk" secondAttribute="trailing" constant="16" id="FKK-aN-6XR"/>
                             <constraint firstItem="FyE-My-kNt" firstAttribute="top" secondItem="m34-6C-KHO" secondAttribute="bottom" constant="8" id="IEE-wy-sMG"/>
                             <constraint firstItem="m34-6C-KHO" firstAttribute="top" secondItem="ELv-dg-lO4" secondAttribute="bottom" constant="8" id="N0F-T3-ffY"/>
@@ -82,6 +82,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tov-VU-eeJ" secondAttribute="trailing" constant="16" id="a6y-GA-J5u"/>
                             <constraint firstAttribute="bottom" secondItem="oh9-iS-CdF" secondAttribute="bottom" id="bix-p4-YIc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m34-6C-KHO" secondAttribute="trailing" constant="16" id="cc3-9u-ivG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FyE-My-kNt" secondAttribute="trailing" constant="16" id="fBu-fW-iIu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ELv-dg-lO4" secondAttribute="trailing" constant="16" id="gnc-Ep-acU"/>
                             <constraint firstItem="Tov-VU-eeJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jvE-45-D5X"/>
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="opm-MN-qMu"/>
@@ -107,14 +108,14 @@
             <objects>
                 <viewController id="aSs-W1-82a" userLabel="Change City" customClass="ChangeCityViewController" customModule="Weather_Here" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uKQ-tV-Cdn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="tYz-jq-7Xq" userLabel="Background">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLM-HF-bUx" userLabel="Weather Conditions">
-                                <rect key="frame" x="16" y="44" width="50" height="50"/>
+                                <rect key="frame" x="16" y="20" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="1cH-Hi-pg8"/>
                                     <constraint firstAttribute="height" constant="50" id="zPI-N5-sL9"/>
@@ -127,7 +128,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8j-tO-Ffh">
-                                <rect key="frame" x="72" y="128" width="231" height="30"/>
+                                <rect key="frame" x="72" y="104" width="176" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="address-level2"/>
@@ -136,7 +137,7 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pqz-0n-CiI">
-                                <rect key="frame" x="72" y="99" width="231" height="21"/>
+                                <rect key="frame" x="72" y="75" width="176" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Q2K-y3-Vrq"/>
                                 </constraints>
@@ -145,7 +146,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYP-rX-GGs">
-                                <rect key="frame" x="28" y="166" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="142" width="320" height="162"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="162" id="Vv7-Yc-9LH"/>
                                 </constraints>
@@ -155,7 +156,7 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3R9-J2-M5Q">
-                                <rect key="frame" x="173" y="697" width="30" height="46"/>
+                                <rect key="frame" x="145" y="487" width="30" height="46"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="29"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -176,12 +177,14 @@
                             <constraint firstItem="zYP-rX-GGs" firstAttribute="centerX" secondItem="uKQ-tV-Cdn" secondAttribute="centerX" id="RgP-jI-9Nt"/>
                             <constraint firstItem="tYz-jq-7Xq" firstAttribute="top" secondItem="uKQ-tV-Cdn" secondAttribute="top" id="Sc3-Wn-OyY"/>
                             <constraint firstItem="zYP-rX-GGs" firstAttribute="top" secondItem="r8j-tO-Ffh" secondAttribute="bottom" constant="8" id="Vxw-t6-7j2"/>
+                            <constraint firstItem="zYP-rX-GGs" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" id="ZJD-2T-cfY"/>
                             <constraint firstItem="tYz-jq-7Xq" firstAttribute="trailing" secondItem="McV-qT-S32" secondAttribute="trailing" id="ZPx-61-Ug0"/>
                             <constraint firstItem="r8j-tO-Ffh" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" constant="72" id="cYW-fN-5oF"/>
                             <constraint firstItem="tYz-jq-7Xq" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" id="fW5-Ig-mjH"/>
                             <constraint firstItem="McV-qT-S32" firstAttribute="trailing" secondItem="pqz-0n-CiI" secondAttribute="trailing" constant="72" id="k2n-0T-IT0"/>
                             <constraint firstItem="McV-qT-S32" firstAttribute="trailing" secondItem="r8j-tO-Ffh" secondAttribute="trailing" constant="72" id="p88-mx-rBg"/>
                             <constraint firstItem="r8j-tO-Ffh" firstAttribute="top" secondItem="pqz-0n-CiI" secondAttribute="bottom" constant="8" id="q4G-Ut-xpF"/>
+                            <constraint firstItem="zYP-rX-GGs" firstAttribute="trailing" secondItem="McV-qT-S32" secondAttribute="trailing" id="tdO-Fi-4f6"/>
                             <constraint firstItem="QLM-HF-bUx" firstAttribute="top" secondItem="McV-qT-S32" secondAttribute="top" id="vOu-kh-H7h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="McV-qT-S32"/>
