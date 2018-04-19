@@ -21,7 +21,8 @@ class ChangeCityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureLabels()
+        configureTextField()
+        configureGestures()
         configureButtons()
     }
 
@@ -32,26 +33,50 @@ class ChangeCityViewController: UIViewController {
     //MARK:- Button Actions
     ///Triggers city name change.
     @IBAction func getWeatherButtonTapped(sender: UIButton) {
-        guard let cityName = changeCityTextfield.text, cityName != "" else {
+        guard let cityName = changeCityTextfield.text, !cityName.isEmpty else {
             warningLabel.text = NSLocalizedString("lWarningLabel", comment: "")
             return
         }
-        
-        delegate?.changeCityName(city: cityName)
-        self.dismiss(animated: true, completion: nil)
+        changeCityName(cityName)
     }
     
     ///Triggers navigation back to weather condtions.
     @IBAction func backButtonTapped(sender: UIButton) {
+        dismissKeyboard()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func changeCityName(_ cityName: String) {
+        delegate?.changeCityName(city: cityName)
+        dismissKeyboard()
         self.dismiss(animated: true, completion: nil)
     }
     
     //MARK:- Configure
-    private func configureLabels() {
+    private func configureTextField() {
         changeCityTextfield.placeholder = NSLocalizedString("lEnterCityNameTextField", comment: "")
+        changeCityTextfield.delegate = self
+    }
+    
+    private func configureGestures() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     private func configureButtons() {
         getWeatherButton.setTitle(NSLocalizedString("lGetWeatherButton", comment: ""), for: .normal)
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
+//MARK: - UITextView Extension
+extension ChangeCityViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let cityName = textField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        changeCityName(cityName)
+        return true
     }
 }

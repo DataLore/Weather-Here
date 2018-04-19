@@ -2,7 +2,6 @@
 //  AppDelegate.swift
 //  Weather Here
 //
-//  Created by Phil Pepper on 18/04/2018.
 //  Copyright © 2018 Emerald River. All rights reserved.
 //
 
