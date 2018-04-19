@@ -70,7 +70,7 @@ playground.xcworkspace
 .build/
 
 # CocoaPods - Refactored to standalone file
-pods/
+Pods/
 podfile.lock
 
 # Carthage - Refactored to standalone file

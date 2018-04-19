@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import SwiftSpinner
 
 class WeatherViewController: UIViewController {
     
@@ -101,10 +102,14 @@ class WeatherViewController: UIViewController {
             print("Unable to Locate API Request")
             return
         }
+        
+        SwiftSpinner.show("")
+        
         let task = urlSession.dataTask(with: urlRequest!) { (data, response, error) in
             guard let data = data, error == nil else {
                 let statusCode = (response as! HTTPURLResponse).statusCode
                 print(error?.localizedDescription ?? "\(statusCode) Connection Error")
+                SwiftSpinner.hide()
                 self.updateUIError(NSLocalizedString("lConnectionError", comment: ""))
                 return
             }
@@ -121,6 +126,7 @@ class WeatherViewController: UIViewController {
     func processWeatherData(_ data: Data) {
         guard let resultsJSON = try? JSONSerialization.jsonObject(with: data, options: []), let results = resultsJSON as? [String: Any]  else {
             print("Error Parsing Server Response")
+            SwiftSpinner.hide()
             updateUIError(NSLocalizedString("lWeatherUnavailable", comment: ""))
             return
         }
@@ -150,6 +156,7 @@ class WeatherViewController: UIViewController {
             weatherDataModel.city = city
         }
         
+        SwiftSpinner.hide()
         updateUI()
     }
 
@@ -190,7 +197,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Manager Failed with \(error)")
-        updateUIError(NSLocalizedString("lLocationUnavilable", comment: ""))
+        updateUIError(NSLocalizedString("lLocationUnavailable", comment: ""))
     }
 }
 
