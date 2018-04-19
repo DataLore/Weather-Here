@@ -127,13 +127,13 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8j-tO-Ffh">
-                                <rect key="frame" x="72" y="159" width="231" height="30"/>
+                                <rect key="frame" x="72" y="128" width="231" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3R9-J2-M5Q">
-                                <rect key="frame" x="72" y="204" width="231" height="46"/>
+                                <rect key="frame" x="72" y="173" width="231" height="46"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="29"/>
                                 <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,7 +143,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pqz-0n-CiI">
-                                <rect key="frame" x="72" y="130" width="231" height="21"/>
+                                <rect key="frame" x="72" y="99" width="231" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Q2K-y3-Vrq"/>
                                 </constraints>
@@ -155,8 +155,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pqz-0n-CiI" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" constant="72" id="1Fi-K4-ZdE"/>
-                            <constraint firstItem="pqz-0n-CiI" firstAttribute="top" secondItem="McV-qT-S32" secondAttribute="top" constant="86" id="1bh-FV-RSB"/>
                             <constraint firstItem="McV-qT-S32" firstAttribute="trailing" secondItem="3R9-J2-M5Q" secondAttribute="trailing" constant="72" id="2rr-XM-hJs"/>
+                            <constraint firstItem="pqz-0n-CiI" firstAttribute="top" secondItem="QLM-HF-bUx" secondAttribute="bottom" constant="5" id="5a2-1I-cyE"/>
                             <constraint firstAttribute="bottom" secondItem="tYz-jq-7Xq" secondAttribute="bottom" id="6SX-cN-NgA"/>
                             <constraint firstItem="QLM-HF-bUx" firstAttribute="leading" secondItem="McV-qT-S32" secondAttribute="leading" constant="16" id="EQ0-q7-6yP"/>
                             <constraint firstItem="3R9-J2-M5Q" firstAttribute="top" secondItem="r8j-tO-Ffh" secondAttribute="bottom" constant="15" id="J9B-gF-ZCp"/>
