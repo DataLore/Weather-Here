@@ -166,7 +166,7 @@ class WeatherViewController: UIViewController {
         DispatchQueue.main.async {
             self.temperatureLabel.text = "\(self.weatherDataModel.temperature)°"
             self.windLabel.text = "\(self.weatherDataModel.windSpeed) kph / \(self.weatherDataModel.windDirection)"
-            self.weatherIcon.image = UIImage(named: self.weatherDataModel.wetherIconName)
+            self.weatherIcon.image = UIImage(named: self.weatherDataModel.weatherIconName)
             self.cityLabel.text = self.weatherDataModel.city
         }
     }

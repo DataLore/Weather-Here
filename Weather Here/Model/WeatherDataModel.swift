@@ -13,7 +13,7 @@ class WeatherDataModel {
     var windSpeed: Int = 0
     var city: String = ""
     private(set) var windDirection: String = ""
-    private(set) var wetherIconName: String = ""
+    private(set) var weatherIconName: String = ""
     
     /**
      Maps weather condition to icon given API condition code.
@@ -23,43 +23,31 @@ class WeatherDataModel {
     func setWeatherIconName(_ condition: Int) {
         switch (condition) {
         case 200...232:
-            wetherIconName = "tstorm1"
-            
+            weatherIconName = "tstorm1"
         case 300...321:
-            wetherIconName = "lightRain"
-            
+            weatherIconName = "lightRain"
         case 500...531:
-            wetherIconName = "shower1"
-            
+            weatherIconName = "shower1"
         case 600...622:
-            wetherIconName = "snow1"
-            
+            weatherIconName = "snow1"
         case 701...771:
-            wetherIconName = "fog"
-            
+            weatherIconName = "fog"
         case 781:
-            wetherIconName = "tstorm2"
-            
+            weatherIconName = "tstorm2"
         case 800:
-            wetherIconName = "sunny"
-            
+            weatherIconName = "sunny"
         case 801...802:
-            wetherIconName = "cloudy"
-            
+            weatherIconName = "cloudy"
         case 803...804:
-            wetherIconName = "overcast"
-            
+            weatherIconName = "overcast"
         case 900...902, 905...1000:
-            wetherIconName = "tstorm2"
-            
+            weatherIconName = "tstorm2"
         case 903:
-            wetherIconName = "snow2"
-            
+            weatherIconName = "snow2"
         case 904:
-            wetherIconName = "sunny"
-            
+            weatherIconName = "sunny"
         default:
-            wetherIconName = "unknown"
+            weatherIconName = "unknown"
         }
     }
     
