@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A00555720884BA2005C35CB /* WeatherDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00555620884BA2005C35CB /* WeatherDataModelTests.swift */; };
 		4A00555920884BBF005C35CB /* ChangeCityViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00555820884BBF005C35CB /* ChangeCityViewControllerTests.swift */; };
+		4A2C0B0720885B17009B718C /* countryCodes.json in Resources */ = {isa = PBXBuildFile; fileRef = 4A2C0B0620885B16009B718C /* countryCodes.json */; };
 		4A3842F820875AA800155D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3842F720875AA800155D88 /* AppDelegate.swift */; };
 		4A38430220875AA900155D88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A38430020875AA900155D88 /* LaunchScreen.storyboard */; };
 		4A38431820875AA900155D88 /* Weather_HereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A38431720875AA900155D88 /* Weather_HereUITests.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		4A00555620884BA2005C35CB /* WeatherDataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModelTests.swift; sourceTree = "<group>"; };
 		4A00555820884BBF005C35CB /* ChangeCityViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewControllerTests.swift; sourceTree = "<group>"; };
+		4A2C0B0620885B16009B718C /* countryCodes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countryCodes.json; sourceTree = "<group>"; };
 		4A3842F420875AA800155D88 /* Weather Here.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weather Here.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3842F720875AA800155D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A38430120875AA900155D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				4AA7A72E20877CD70080E02D /* Keys.plist */,
+				4A2C0B0620885B16009B718C /* countryCodes.json */,
 				4A45980C2087DCEA009E780E /* Localizable.strings */,
 				4A9388C6208800000057E728 /* InfoPlist.strings */,
 				4A9388C02087FED40057E728 /* Info.plist */,
@@ -316,6 +319,7 @@
 				4AA7A72F20877CD70080E02D /* Keys.plist in Resources */,
 				4A38430220875AA900155D88 /* LaunchScreen.storyboard in Resources */,
 				4A45980D2087DD1B009E780E /* Main.storyboard in Resources */,
+				4A2C0B0720885B17009B718C /* countryCodes.json in Resources */,
 				4A4598132087F861009E780E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,7 +599,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSG2Z93HJH;
 				INFOPLIST_FILE = "$(SRCROOT)/Weather Here/Support/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-Here";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -611,7 +618,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSG2Z93HJH;
 				INFOPLIST_FILE = "$(SRCROOT)/Weather Here/Support/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-Here";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -627,7 +637,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSG2Z93HJH;
 				INFOPLIST_FILE = "Weather HereTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-HereTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -644,7 +658,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSG2Z93HJH;
 				INFOPLIST_FILE = "Weather HereTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-HereTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -660,7 +678,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSG2Z93HJH;
 				INFOPLIST_FILE = "Weather HereUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-HereUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -676,7 +698,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSG2Z93HJH;
 				INFOPLIST_FILE = "Weather HereUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.EmeraldRiver.Weather-HereUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
