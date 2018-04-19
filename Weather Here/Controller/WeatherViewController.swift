@@ -15,13 +15,23 @@ class WeatherViewController: UIViewController {
     @IBOutlet var weatherIcon: UIImageView!
     @IBOutlet var cityLabel: UILabel!
     
-    var weatherDataModel = WeatherDataModel()
     let locationManager = CLLocationManager()
     
-    var apiKey: String!
+    private (set) var urlSession: URLSessionProtocol!
+    private (set) var apiKey: String!
+    private var urlRequest: URLRequest?
+    private var responseData: Data?
+    var weatherDataModel: WeatherDataModel!
     
+    convenience init(_ urlSession: URLSession) {
+        self.init()
+        self.urlSession = urlSession
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDataModel()
+        configureInjection()
         configureKey()
         configureLocationManager()
     }
@@ -38,14 +48,22 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK:- Confgiure
-    private func configureKey() {
+    func configureDataModel() {
+        weatherDataModel = WeatherDataModel()
+    }
+    
+    func configureInjection() {
+        urlSession = URLSession.shared
+    }
+    
+    func configureKey() {
         guard let plist = Bundle.main.url(forResource: "Keys", withExtension: "plist") else {fatalError()}
         guard let storedKey = NSDictionary(contentsOf: plist) as? [String: Any] else {fatalError()}
         guard let apiKey = storedKey["APIKey"] as? String else {fatalError()}
         self.apiKey = apiKey
     }
     
-    private func configureLocationManager() {
+    func configureLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -54,12 +72,11 @@ class WeatherViewController: UIViewController {
     
     //MARK:- API
     /**
-     Fetches weather data from the weather API.
+     Configures API request.
      
      - parameter parameters: The parameters supplied to the API.
      */
-    func fetchWeatherData(parameters: [String:String]) {
-        
+    func configureRequest(_ parameters: [String:String]) {
         var requestComponents = URLComponents()
         requestComponents.scheme = "http"
         requestComponents.host = "api.openweathermap.org"
@@ -72,10 +89,19 @@ class WeatherViewController: UIViewController {
         requestComponents.queryItems?.append(URLQueryItem(name: "units", value: "metric"))
         requestComponents.queryItems?.append(URLQueryItem(name: "appid", value: apiKey))
         
-        var request = URLRequest(url: requestComponents.url!)
-        request.httpMethod = "GET"
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        urlRequest = URLRequest(url: requestComponents.url!)
+        urlRequest!.httpMethod = "GET"
+    }
+    
+    /**
+     Fetches weather data from the weather API.
+     */
+    func fetchWeatherData() {
+        guard urlRequest != nil else {
+            print("Unable to Locate API Request")
+            return
+        }
+        let task = urlSession.dataTask(with: urlRequest!) { (data, response, error) in
             guard let data = data, error == nil else {
                 let statusCode = (response as! HTTPURLResponse).statusCode
                 print(error?.localizedDescription ?? "\(statusCode) Connection Error")
@@ -153,7 +179,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
             let longitude = String(location.coordinate.longitude)
             let locationData = ["lat": latitude, "lon": longitude]
             
-            fetchWeatherData(parameters: locationData)
+            configureRequest(locationData)
+            fetchWeatherData()
         }
     }
     
@@ -171,6 +198,23 @@ extension WeatherViewController: ChangeCityDelegate {
      - parameter city: The new city name to supply to the API.
      */
     func changeCityName(city: String) {
-        fetchWeatherData(parameters: ["q": city])
+        configureRequest(["q": city])
+        fetchWeatherData()
     }
 }
+
+//MARK:- URLSession Dependancy Injection
+protocol URLSessionProtocol: class {
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+}
+
+protocol URLSessionDataTaskProtocol {
+    func resume()
+}
+
+extension URLSession: URLSessionProtocol {
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+        return ((dataTask(with: request, completionHandler: completionHandler) as URLSessionDataTask) as URLSessionDataTaskProtocol)
+    }
+}
+extension URLSessionDataTask: URLSessionDataTaskProtocol { }
