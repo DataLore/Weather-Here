@@ -16,7 +16,7 @@ class WeatherDataModel {
     private(set) var weatherIconName: String = ""
     
     /**
-     Maps weather condition to icon given API condition code.
+     Computes and sets weather icon from API weather condition code.
      
      - parameter condition: API condition code.
     */
@@ -52,7 +52,7 @@ class WeatherDataModel {
     }
     
     /**
-     Maps weather condition to icon given API condition code.
+     Computes and sets the wind direction from degrees.
      
      - parameter degrees: Degrees indicating direction.
      */

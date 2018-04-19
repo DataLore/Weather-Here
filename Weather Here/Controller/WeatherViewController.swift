@@ -37,10 +37,6 @@ class WeatherViewController: UIViewController {
         configureLocationManager()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toChangeCityName" {
             let destinationVC = segue.destination as! ChangeCityViewController

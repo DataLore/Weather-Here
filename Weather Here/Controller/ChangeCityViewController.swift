@@ -32,10 +32,6 @@ class ChangeCityViewController: UIViewController {
         configureButtons()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     //MARK:- Button Actions
     ///Triggers city name change.
     @IBAction func getWeatherButtonTapped(sender: UIButton) {
@@ -52,6 +48,7 @@ class ChangeCityViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    ///Changes the city name correcting for country and navigates to weather conditions.
     private func changeCityName(_ cityName: String) {
         var newCityName = ""
         if !cityName.contains(",") {
