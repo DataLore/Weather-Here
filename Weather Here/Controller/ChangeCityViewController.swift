@@ -27,11 +27,16 @@ class ChangeCityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTextField()
         configureCountryCodes()
+        configureTextField()
         confgiureCountryPicker()
         configureGestures()
         configureButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reconfigureTextField()
     }
         
     @objc private func dismissKeyboard() {view.endEditing(true)}
@@ -93,6 +98,10 @@ class ChangeCityViewController: UIViewController {
     
     private func configureButtons() {
         getWeatherButton.setTitle(NSLocalizedString("lGetWeatherButton", comment: ""), for: .normal)
+    }
+    
+    private func reconfigureTextField() {
+        changeCityTextfield.text = ""
     }
 }
 
