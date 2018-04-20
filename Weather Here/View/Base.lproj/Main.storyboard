@@ -32,7 +32,6 @@
                                 </state>
                                 <connections>
                                     <action selector="changeCityButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AVQ-JV-hUv"/>
-                                    <segue destination="aSs-W1-82a" kind="presentation" identifier="toChangeCityName" id="17P-XS-h46"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m34-6C-KHO" userLabel="Wind">

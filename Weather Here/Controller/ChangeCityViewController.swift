@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ChangeCityDelegate {
+protocol ChangeCityControllerDelegate {
     func changeCityName(city: String)
 }
 
@@ -21,7 +21,7 @@ class ChangeCityViewController: UIViewController {
     var countryCode: String = "UK"
     var countryKeys = [String]()
     var countryValues = [String]()
-    var delegate: ChangeCityDelegate?
+    var delegate: ChangeCityControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class ChangeCityViewController: UIViewController {
     ///Triggers navigation back to weather condtions.
     @IBAction func backButtonTapped(sender: UIButton) {
         dismissKeyboard()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     ///Changes the city name correcting for country and navigates back to weather conditions.
@@ -60,9 +60,9 @@ class ChangeCityViewController: UIViewController {
         else {
             newCityName = cityName
         }
-        delegate?.changeCityName(city: newCityName)
+        delegate.changeCityName(city: newCityName)
         dismissKeyboard()
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK:- Configure

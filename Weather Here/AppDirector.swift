@@ -16,7 +16,9 @@ class AppDirector: UIWindow {
     let weatherViewController: WeatherViewController
     
     lazy var changeCityViewController: ChangeCityViewController = {
-        return self.mainStoryboard.instantiateViewController(withIdentifier: "changeCityView") as! ChangeCityViewController
+        let changeCityViewController = self.mainStoryboard.instantiateViewController(withIdentifier: "changeCityView") as! ChangeCityViewController
+        changeCityViewController.delegate = self
+        return changeCityViewController
     }()
     
     lazy var apiKey: String = {
@@ -57,8 +59,15 @@ class AppDirector: UIWindow {
     
 }
 
-extension AppDirector: WeatherViewControllerDelegate {
+extension AppDirector: WeatherControllerDelegate {
     func getAPIKey() -> String {return self.apiKey}
+    func presentChangeCity() {self.rootViewController?.present(changeCityViewController, animated: true, completion: nil)}
+}
+
+extension AppDirector: ChangeCityControllerDelegate {
+    func changeCityName(city: String) {
+        weatherViewController.changeCityName(city: city)
+    }
 }
 
 

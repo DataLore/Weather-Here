@@ -9,8 +9,9 @@ import UIKit
 import CoreLocation
 import SwiftSpinner
 
-protocol WeatherViewControllerDelegate {
+protocol WeatherControllerDelegate {
     func getAPIKey() -> String
+    func presentChangeCity()
 }
 
 class WeatherViewController: UIViewController {
@@ -26,9 +27,9 @@ class WeatherViewController: UIViewController {
     private var urlRequest: URLRequest?
     private var responseData: Data?
     var weatherDataModel: WeatherDataModel!
-    var delegate: WeatherViewControllerDelegate!
+    var delegate: WeatherControllerDelegate!
     
-    convenience init(_ delegate: WeatherViewControllerDelegate, urlSession: URLSession) {
+    convenience init(_ delegate: WeatherControllerDelegate, urlSession: URLSession) {
         self.init()
         self.delegate = delegate
         self.urlSession = urlSession
@@ -41,16 +42,14 @@ class WeatherViewController: UIViewController {
         configureLocationManager()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toChangeCityName" {
-            let destinationVC = segue.destination as! ChangeCityViewController
-            destinationVC.delegate = self
-        }
+    func changeCityName(city: String) {
+        configureRequest(["q": city])
+        fetchWeatherData()
     }
     
     //MARK:- IBActions
     @IBAction func changeCityButtonTapped(_ sender: UIButton) {
-        
+        delegate.presentChangeCity()
     }
     
     //MARK:- Confgiure
@@ -129,7 +128,6 @@ class WeatherViewController: UIViewController {
             return
         }
         
-        //Could use the Swift 4 codable but the data required is minimal
         if let main = results["main"] as? [String: Any] {
             if let temperature = main["temp"] as? Double {
                 weatherDataModel.temperature = Int(temperature)
@@ -198,18 +196,4 @@ extension WeatherViewController: CLLocationManagerDelegate {
         updateUIError(NSLocalizedString("lLocationUnavailable", comment: ""))
     }
 }
-
-//MARK:- Change City Delegate
-extension WeatherViewController: ChangeCityDelegate {
-    /**
-     Calls the API with a new city name.
-     
-     - parameter city: The new city name to supply to the API.
-     */
-    func changeCityName(city: String) {
-        configureRequest(["q": city])
-        fetchWeatherData()
-    }
-}
-
 
