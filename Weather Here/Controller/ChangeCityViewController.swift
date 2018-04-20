@@ -8,6 +8,8 @@
 import UIKit
 
 protocol ChangeCityControllerDelegate {
+    func getCountryKeys() -> [String]
+    func getCountryValues() -> [String]
     func changeCityName(city: String)
 }
 
@@ -19,8 +21,8 @@ class ChangeCityViewController: UIViewController {
     @IBOutlet var getWeatherButton: UIButton!
     
     var countryCode: String = "UK"
-    var countryKeys = [String]()
-    var countryValues = [String]()
+    var countryKeys: [String]!
+    var countryValues: [String]!
     var delegate: ChangeCityControllerDelegate!
     
     override func viewDidLoad() {
@@ -71,14 +73,8 @@ class ChangeCityViewController: UIViewController {
     }
     
     private func configureCountryCodes() {
-        guard let url = Bundle.main.url(forResource: "countryCodes", withExtension: "json") else {fatalError()}
-        guard let data = try? Data(contentsOf: url) else {fatalError()}
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: []), let results = json as? [Any] else {fatalError()}
-        for countryCode in results {
-            guard let countryCode = countryCode as? [String: String] else {continue}
-            countryKeys.append(countryCode["Code"]!)
-            countryValues.append(countryCode["Name"]!)
-        }
+        countryKeys = delegate.getCountryKeys()
+        countryValues = delegate.getCountryValues()
     }
     
     private func configureGestures() {

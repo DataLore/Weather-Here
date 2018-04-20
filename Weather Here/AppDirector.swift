@@ -25,6 +25,10 @@ class AppDirector: UIWindow {
         return self.configureAPIKey()
     }()
     
+    lazy var countryCodes: ([String], [String]) = {
+        return self.configureCountryCodes()
+    }()
+    
     init() {
         //AppDirector Setup
         dataModel = WeatherDataModel()
@@ -53,6 +57,19 @@ class AppDirector: UIWindow {
         return apiKey
     }
     
+    func configureCountryCodes() -> ([String], [String]) {
+        var countryCodes = ([String](), [String]())
+        guard let url = Bundle.main.url(forResource: "countryCodes", withExtension: "json") else {fatalError()}
+        guard let data = try? Data(contentsOf: url) else {fatalError()}
+        guard let json = try? JSONSerialization.jsonObject(with: data, options: []), let results = json as? [Any] else {fatalError()}
+        for countryCode in results {
+            guard let countryCode = countryCode as? [String: String] else {continue}
+            countryCodes.0.append(countryCode["Code"]!)
+            countryCodes.1.append(countryCode["Name"]!)
+        }
+        return countryCodes
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -65,11 +82,10 @@ extension AppDirector: WeatherControllerDelegate {
 }
 
 extension AppDirector: ChangeCityControllerDelegate {
-    func changeCityName(city: String) {
-        weatherViewController.changeCityName(city: city)
-    }
+    func getCountryKeys() -> [String] {return countryCodes.0}
+    func getCountryValues() -> [String] {return countryCodes.1}
+    func changeCityName(city: String) {weatherViewController.changeCityName(city: city)}
 }
-
 
 //MARK:- URLSession Dependancy Injection
 protocol URLSessionProtocol: class {
