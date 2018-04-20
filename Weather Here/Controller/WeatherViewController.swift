@@ -23,7 +23,6 @@ class WeatherViewController: UIViewController {
     let locationManager = CLLocationManager()
     
     private (set) var urlSession: URLSessionProtocol!
-    private (set) var apiKey: String!
     private var urlRequest: URLRequest?
     private var responseData: Data?
     var weatherDataModel: WeatherDataModel!
