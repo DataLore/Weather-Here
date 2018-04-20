@@ -11,10 +11,10 @@ import SwiftSpinner
 
 class WeatherViewController: UIViewController {
     
-    @IBOutlet var temperatureLabel: UILabel!
-    @IBOutlet var windLabel: UILabel!
-    @IBOutlet var weatherIcon: UIImageView!
-    @IBOutlet var cityLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var weatherIcon: UIImageView!
+    @IBOutlet weak var cityLabel: UILabel!
     
     let locationManager = CLLocationManager()
     
@@ -23,6 +23,7 @@ class WeatherViewController: UIViewController {
     private var urlRequest: URLRequest?
     private var responseData: Data?
     var weatherDataModel: WeatherDataModel!
+    var appDirector: AppDirector!
     
     convenience init(_ urlSession: URLSession) {
         self.init()
@@ -42,6 +43,11 @@ class WeatherViewController: UIViewController {
             let destinationVC = segue.destination as! ChangeCityViewController
             destinationVC.delegate = self
         }
+    }
+    
+    //MARK:- IBActions
+    @IBAction func changeCityButtonTapped(_ sender: UIButton) {
+        
     }
     
     //MARK:- Confgiure

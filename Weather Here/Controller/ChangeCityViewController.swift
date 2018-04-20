@@ -27,7 +27,6 @@ class ChangeCityViewController: UIViewController {
         super.viewDidLoad()
         configureTextField()
         configureCountryCodes()
-        configurePicker()
         configureGestures()
         configureButtons()
     }
@@ -81,11 +80,6 @@ class ChangeCityViewController: UIViewController {
             countryValues.append(countryCode["Name"]!)
         }
     }
-    
-    private func configurePicker() {
-        countryPicker.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-    }
-    
     
     private func configureGestures() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
