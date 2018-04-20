@@ -54,9 +54,9 @@ class AppDirector: UIWindow {
     }
     
     ///Loads the country codes from storage.
-    func configureCountryCodes() -> ([String], [String]) {
+    func configureCountryCodes(_ bundle: Bundle = Bundle.main) -> ([String], [String]) {
         var countryCodes = ([String](), [String]())
-        guard let url = Bundle.main.url(forResource: "countryCodes", withExtension: "json") else {fatalError()}
+        guard let url = bundle.url(forResource: "countryCodes", withExtension: "json") else {fatalError()}
         guard let data = try? Data(contentsOf: url) else {fatalError()}
         guard let json = try? JSONSerialization.jsonObject(with: data, options: []), let results = json as? [Any] else {fatalError()}
         for countryCode in results {
