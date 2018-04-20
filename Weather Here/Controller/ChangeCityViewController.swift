@@ -33,9 +33,7 @@ class ChangeCityViewController: UIViewController {
         configureButtons()
     }
         
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
+    @objc private func dismissKeyboard() {view.endEditing(true)}
 
     //MARK:- Button Actions
     ///Triggers city name change.
@@ -85,26 +83,20 @@ class ChangeCityViewController: UIViewController {
     private func configureButtons() {
         getWeatherButton.setTitle(NSLocalizedString("lGetWeatherButton", comment: ""), for: .normal)
     }
-    
 }
 
 //MARK:- UIPicker Extensions
 extension ChangeCityViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return countryValues.count
-    }
-    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {return countryValues.count}
 }
 
 extension ChangeCityViewController: UIPickerViewDelegate {
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryCode = countryKeys[row]
-    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {return 80.0}
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {countryCode = countryKeys[row]}
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label: UILabel
@@ -126,10 +118,6 @@ extension ChangeCityViewController: UIPickerViewDelegate {
         label.sizeToFit()
         
         return label
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 80.0
     }
 }
 

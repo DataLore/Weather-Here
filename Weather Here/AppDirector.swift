@@ -5,9 +5,8 @@
 //  Copyright © 2018 Emerald River. All rights reserved.
 //
 
-import Foundation
-import CoreLocation
 import UIKit
+import CoreLocation
 
 class AppDirector: UIWindow {
     
@@ -21,13 +20,8 @@ class AppDirector: UIWindow {
         return changeCityViewController
     }()
     
-    lazy var apiKey: String = {
-        return self.configureAPIKey()
-    }()
-    
-    lazy var countryCodes: ([String], [String]) = {
-        return self.configureCountryCodes()
-    }()
+    lazy var apiKey: String = {return self.configureAPIKey()}()
+    lazy var countryCodes: ([String], [String]) = {return self.configureCountryCodes()}()
     
     init() {
         //AppDirector Setup
@@ -44,12 +38,14 @@ class AppDirector: UIWindow {
         self.makeKeyAndVisible()
     }
     
+    ///Configures the root controller as a UINavigationController.
     func configureRootViewController() {
         let rootViewController = UINavigationController(rootViewController: weatherViewController)
         rootViewController.isNavigationBarHidden = true
         self.rootViewController = rootViewController
     }
     
+    ///Loads the API key from storage.
     func configureAPIKey(_ bundle: Bundle = Bundle.main) -> String {
         guard let plist = bundle.url(forResource: "Keys", withExtension: "plist") else {fatalError()}
         guard let storedKey = NSDictionary(contentsOf: plist) as? [String: Any] else {fatalError()}
@@ -57,6 +53,7 @@ class AppDirector: UIWindow {
         return apiKey
     }
     
+    ///Loads the country codes from storage.
     func configureCountryCodes() -> ([String], [String]) {
         var countryCodes = ([String](), [String]())
         guard let url = Bundle.main.url(forResource: "countryCodes", withExtension: "json") else {fatalError()}
@@ -73,7 +70,6 @@ class AppDirector: UIWindow {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension AppDirector: WeatherControllerDelegate {
