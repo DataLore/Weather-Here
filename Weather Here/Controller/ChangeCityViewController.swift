@@ -51,7 +51,7 @@ class ChangeCityViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    ///Changes the city name correcting for country and navigates to weather conditions.
+    ///Changes the city name correcting for country and navigates back to weather conditions.
     private func changeCityName(_ cityName: String) {
         var newCityName = ""
         if !cityName.contains(",") {
@@ -105,19 +105,35 @@ extension ChangeCityViewController: UIPickerViewDataSource {
 }
 
 extension ChangeCityViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return countryValues[row]
-    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         countryCode = countryKeys[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let title = countryValues[row]
-        let colourTitle = NSAttributedString(string: title, attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label: UILabel
+
+        if let view = view {
+            label = view as! UILabel
+        }
+        else {
+            label = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.frame.width, height: 100))
+        }
         
-        return colourTitle
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                          NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 30.0)!]
+        label.attributedText = NSAttributedString(string: countryValues[row], attributes: attributes)
+        label.textAlignment = .center
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 2
+        label.minimumScaleFactor = 0.5
+        label.sizeToFit()
+        
+        return label
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 80.0
     }
 }
 

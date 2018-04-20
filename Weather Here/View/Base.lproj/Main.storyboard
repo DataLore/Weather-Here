@@ -131,7 +131,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8j-tO-Ffh">
                                 <rect key="frame" x="72" y="104" width="176" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="address-level2"/>
                                 <connections>
                                     <outlet property="delegate" destination="aSs-W1-82a" id="UZb-Gv-AwT"/>
@@ -147,9 +147,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYP-rX-GGs">
-                                <rect key="frame" x="0.0" y="142" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="142" width="320" height="240"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="Vv7-Yc-9LH"/>
+                                    <constraint firstAttribute="height" constant="240" id="Vv7-Yc-9LH"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="aSs-W1-82a" id="Vkb-fX-ZqQ"/>
