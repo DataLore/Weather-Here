@@ -20,7 +20,7 @@ class ChangeCityViewController: UIViewController {
     @IBOutlet weak var countryPicker: UIPickerView!
     @IBOutlet weak var getWeatherButton: UIButton!
     
-    var countryCode: String = "UK"
+    var countryCode: String = ""
     var countryKeys: [String]!
     var countryValues: [String]!
     var delegate: ChangeCityControllerDelegate!
@@ -29,6 +29,7 @@ class ChangeCityViewController: UIViewController {
         super.viewDidLoad()
         configureTextField()
         configureCountryCodes()
+        confgiureCountryPicker()
         configureGestures()
         configureButtons()
     }
@@ -73,6 +74,16 @@ class ChangeCityViewController: UIViewController {
     private func configureCountryCodes() {
         countryKeys = delegate.getCountryKeys()
         countryValues = delegate.getCountryValues()
+    }
+    
+    private func confgiureCountryPicker(_ locale: Locale = Locale.current) {
+        guard let region = locale.regionCode else {return}
+        for i in 0..<countryKeys.count {
+            if countryKeys[i] == region {
+                countryCode = region
+                countryPicker.selectRow(i, inComponent: 0, animated: false)
+            }
+        }
     }
     
     private func configureGestures() {
