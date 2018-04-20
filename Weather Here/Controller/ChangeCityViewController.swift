@@ -15,10 +15,10 @@ protocol ChangeCityControllerDelegate {
 
 class ChangeCityViewController: UIViewController {
 
-    @IBOutlet var changeCityTextfield: UITextField!
-    @IBOutlet var warningLabel: UILabel!
-    @IBOutlet var countryPicker: UIPickerView!
-    @IBOutlet var getWeatherButton: UIButton!
+    @IBOutlet weak var changeCityTextfield: UITextField!
+    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var countryPicker: UIPickerView!
+    @IBOutlet weak var getWeatherButton: UIButton!
     
     var countryCode: String = "UK"
     var countryKeys: [String]!
