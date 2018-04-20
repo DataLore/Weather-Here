@@ -9,6 +9,10 @@ import UIKit
 import CoreLocation
 import SwiftSpinner
 
+protocol WeatherViewControllerDelegate {
+    func getAPIKey() -> String
+}
+
 class WeatherViewController: UIViewController {
     
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -23,9 +27,9 @@ class WeatherViewController: UIViewController {
     private var urlRequest: URLRequest?
     private var responseData: Data?
     var weatherDataModel: WeatherDataModel!
-    var delegate: AppDirector!
+    var delegate: WeatherViewControllerDelegate!
     
-    convenience init(_ delegate: AppDirector, urlSession: URLSession) {
+    convenience init(_ delegate: WeatherViewControllerDelegate, urlSession: URLSession) {
         self.init()
         self.delegate = delegate
         self.urlSession = urlSession
@@ -83,7 +87,7 @@ class WeatherViewController: UIViewController {
             requestComponents.queryItems?.append(queryItem)
         }
         requestComponents.queryItems?.append(URLQueryItem(name: "units", value: "metric"))
-        requestComponents.queryItems?.append(URLQueryItem(name: "appid", value: delegate.apiKey))
+        requestComponents.queryItems?.append(URLQueryItem(name: "appid", value: delegate.getAPIKey()))
         
         urlRequest = URLRequest(url: requestComponents.url!)
         urlRequest!.httpMethod = "GET"

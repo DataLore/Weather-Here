@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import CoreLocation
 import UIKit
 
 class AppDirector: UIWindow {
     
-    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    let dataModel: WeatherDataModel
+    let mainStoryboard: UIStoryboard
     let weatherViewController: WeatherViewController
     
     lazy var changeCityViewController: ChangeCityViewController = {
@@ -23,6 +25,8 @@ class AppDirector: UIWindow {
     
     init() {
         //AppDirector Setup
+        dataModel = WeatherDataModel()
+        mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         weatherViewController = mainStoryboard.instantiateViewController(withIdentifier: "weatherView") as! WeatherViewController
         
         //UIWindow Setup
@@ -51,6 +55,10 @@ class AppDirector: UIWindow {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+extension AppDirector: WeatherViewControllerDelegate {
+    func getAPIKey() -> String {return self.apiKey}
 }
 
 
