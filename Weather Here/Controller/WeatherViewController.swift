@@ -23,10 +23,11 @@ class WeatherViewController: UIViewController {
     private var urlRequest: URLRequest?
     private var responseData: Data?
     var weatherDataModel: WeatherDataModel!
-    var appDirector: AppDirector!
+    var delegate: AppDirector!
     
-    convenience init(_ urlSession: URLSession) {
+    convenience init(_ delegate: AppDirector, urlSession: URLSession) {
         self.init()
+        self.delegate = delegate
         self.urlSession = urlSession
     }
 
@@ -34,7 +35,6 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
         configureDataModel()
         configureInjection()
-        configureKey()
         configureLocationManager()
     }
     
@@ -57,13 +57,6 @@ class WeatherViewController: UIViewController {
     
     func configureInjection() {
         urlSession = URLSession.shared
-    }
-    
-    func configureKey() {
-        guard let plist = Bundle.main.url(forResource: "Keys", withExtension: "plist") else {fatalError()}
-        guard let storedKey = NSDictionary(contentsOf: plist) as? [String: Any] else {fatalError()}
-        guard let apiKey = storedKey["APIKey"] as? String else {fatalError()}
-        self.apiKey = apiKey
     }
     
     func configureLocationManager() {
@@ -90,7 +83,7 @@ class WeatherViewController: UIViewController {
             requestComponents.queryItems?.append(queryItem)
         }
         requestComponents.queryItems?.append(URLQueryItem(name: "units", value: "metric"))
-        requestComponents.queryItems?.append(URLQueryItem(name: "appid", value: apiKey))
+        requestComponents.queryItems?.append(URLQueryItem(name: "appid", value: delegate.apiKey))
         
         urlRequest = URLRequest(url: requestComponents.url!)
         urlRequest!.httpMethod = "GET"

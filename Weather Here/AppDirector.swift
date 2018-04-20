@@ -10,11 +10,15 @@ import UIKit
 
 class AppDirector: UIWindow {
     
-    let mainStoryboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
     let weatherViewController: WeatherViewController
     
     lazy var changeCityViewController: ChangeCityViewController = {
         return self.mainStoryboard.instantiateViewController(withIdentifier: "changeCityView") as! ChangeCityViewController
+    }()
+    
+    lazy var apiKey: String = {
+        return self.configureAPIKey()
     }()
     
     init() {
@@ -25,6 +29,7 @@ class AppDirector: UIWindow {
         super.init(frame: UIScreen.main.bounds)
         
         //Finalise Setup
+        weatherViewController.delegate = self
         configureRootViewController()
         self.makeKeyAndVisible()
     }
@@ -32,8 +37,14 @@ class AppDirector: UIWindow {
     func configureRootViewController() {
         let rootViewController = UINavigationController(rootViewController: weatherViewController)
         rootViewController.isNavigationBarHidden = true
-        
         self.rootViewController = rootViewController
+    }
+    
+    func configureAPIKey(_ bundle: Bundle = Bundle.main) -> String {
+        guard let plist = bundle.url(forResource: "Keys", withExtension: "plist") else {fatalError()}
+        guard let storedKey = NSDictionary(contentsOf: plist) as? [String: Any] else {fatalError()}
+        guard let apiKey = storedKey["APIKey"] as? String else {fatalError()}
+        return apiKey
     }
     
     required init?(coder aDecoder: NSCoder) {
