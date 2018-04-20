@@ -31,6 +31,10 @@ class ChangeCityViewController: UIViewController {
         configureGestures()
         configureButtons()
     }
+        
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
 
     //MARK:- Button Actions
     ///Triggers city name change.
@@ -92,9 +96,6 @@ class ChangeCityViewController: UIViewController {
         getWeatherButton.setTitle(NSLocalizedString("lGetWeatherButton", comment: ""), for: .normal)
     }
     
-    @objc private func dismissKeyboard() {
-        view.endEditing(true)
-    }
 }
 
 //MARK:- UIPicker Extensions
