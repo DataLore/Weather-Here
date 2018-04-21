@@ -97,7 +97,7 @@ class AppDirector: UIWindow {
         let urlRequest = createAPIRequest(using: parameters)
         
         SwiftSpinner.show("")
-        
+    
         let task = urlSession.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data, error == nil else {
                 let statusCode = (response as! HTTPURLResponse).statusCode
@@ -150,14 +150,17 @@ class AppDirector: UIWindow {
         //Update model with temperature
         if let main = results["main"] as? [String: Any] {
             if let temperature = main["temp"] as? Double {
-                dataModel.temperature = Int(temperature)
+                dataModel.temperature = temperature
+            }
+            else {
+                dataModel.temperature = 0
             }
         }
         
         //Update model with wind speed and direction
         if let wind = results["wind"] as? [String: Any] {
             if let windSpeed = wind["speed"] as? Double {
-                dataModel.windSpeed = Int(windSpeed)
+                dataModel.windSpeed = windSpeed
             }
             else {
                 dataModel.windSpeed = 0
@@ -186,6 +189,7 @@ class AppDirector: UIWindow {
         
         weatherViewController.updateUI()
     }
+
 }
 
 //MARK:- Weather Controller Extension
@@ -221,5 +225,18 @@ extension AppDirector: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Manager Failed with \(error)")
         weatherViewController.updateUI(with: NSLocalizedString("lLocationUnavailable", comment: ""))
+    }
+}
+
+//MARK:- Utility Extensions
+extension Formatter {
+    static let decimalFormatter = NumberFormatter()
+}
+
+extension Double {
+    func decimalPlaces(_ places: Int) -> String {
+        Formatter.decimalFormatter.minimumFractionDigits = places
+        Formatter.decimalFormatter.maximumFractionDigits = places
+        return Formatter.decimalFormatter.string(from: NSNumber(value: self))!
     }
 }

@@ -10,9 +10,9 @@ import UIKit
 class WeatherDataModel {
 
     ///Current temperature.
-    var temperature: Int = 0
+    var temperature: Double = 0.0
     ///Current wind speed.
-    var windSpeed: Int = 0
+    var windSpeed: Double = 0.0
     ///Current city.
     var city: String = ""
     ///Current wind direction given as a compass direction.

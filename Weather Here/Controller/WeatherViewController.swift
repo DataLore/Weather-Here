@@ -51,8 +51,8 @@ class WeatherViewController: UIViewController {
     func updateUI() {
         DispatchQueue.main.async {
             SwiftSpinner.hide()
-            self.temperatureLabel.text = "\(self.dataModel.temperature)°"
-            self.windLabel.text = "\(self.dataModel.windSpeed) kph / \(self.dataModel.windDirection)"
+            self.temperatureLabel.text = "\(self.dataModel.temperature.decimalPlaces(1))°"
+            self.windLabel.text = "\(self.dataModel.windSpeed.decimalPlaces(1)) m/s │ \(self.dataModel.windDirection)"
             self.weatherIcon.image = UIImage(named: self.dataModel.weatherIconName)
             self.cityLabel.text = self.dataModel.city
         }
