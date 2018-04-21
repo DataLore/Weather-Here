@@ -32,7 +32,7 @@ class WeatherDataModel {
         case 300...321:
             weatherIconName = "lightRain"
         case 500...531:
-            weatherIconName = "shower1"
+            weatherIconName = "shower"
         case 600...622:
             weatherIconName = "snow1"
         case 701...771:
