@@ -19,7 +19,7 @@ class ChangeCityViewController: UIViewController {
     @IBOutlet weak var countryPicker: UIPickerView!
     @IBOutlet weak var getWeatherButton: UIButton!
     
-    var countryCode: String = ""
+    var countryCode: String = "GB"
     var countryKeys: [String]!
     var countryValues: [String]!
     var delegate: ChangeCityControllerDelegate!
@@ -60,7 +60,8 @@ class ChangeCityViewController: UIViewController {
     
     ///Changes the city name correcting for country and navigates back to weather conditions.
     private func changeCityName(_ cityName: String) {
-        delegate.changeCityName(city: cityName.trimmingCharacters(in: .whitespaces))
+        let city = cityName.trimmingCharacters(in: .whitespaces).appending(", \(countryCode)")
+        delegate.changeCityName(city: city)
         dismissKeyboard()
         dismiss(animated: true, completion: nil)
     }
@@ -84,6 +85,7 @@ class ChangeCityViewController: UIViewController {
             if countryKeys[i] == region {
                 countryCode = region
                 countryPicker.selectRow(i, inComponent: 0, animated: false)
+                return
             }
         }
     }
