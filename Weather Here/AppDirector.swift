@@ -11,7 +11,8 @@ import SwiftSpinner
 
 class AppDirector: UIWindow {
 
-    let dataModel: WeatherDataModel
+    let weatherDataModel: WeatherDataModel
+    let changeCityDataModel: ChangeCityDataModel
     let locationManager: CLLocationManager
     let mainStoryboard: UIStoryboard
     let weatherViewController: WeatherViewController
@@ -19,15 +20,17 @@ class AppDirector: UIWindow {
     lazy var changeCityViewController: ChangeCityViewController = {
         let changeCityViewController = self.mainStoryboard.instantiateViewController(withIdentifier: "changeCityView") as! ChangeCityViewController
         changeCityViewController.delegate = self
+        changeCityViewController.dataModel = changeCityDataModel
         return changeCityViewController
     }()
     
     lazy var apiKey: String = {return self.configureAPIKey()}()
-    lazy var countryCodes: ([String], [String]) = {return self.configureCountryCodes()}()
+
     
     init(bundle: Bundle = Bundle.main, screen: UIScreen = UIScreen.main) {
         //AppDirector Setup
-        dataModel = WeatherDataModel()
+        weatherDataModel = WeatherDataModel()
+        changeCityDataModel = ChangeCityDataModel()
         locationManager = CLLocationManager()
         mainStoryboard = UIStoryboard(name: "Main", bundle: bundle)
         weatherViewController = mainStoryboard.instantiateViewController(withIdentifier: "weatherView") as! WeatherViewController
@@ -36,7 +39,7 @@ class AppDirector: UIWindow {
         super.init(frame: screen.bounds)
         
         //Finalise Setup
-        weatherViewController.dataModel = dataModel
+        weatherViewController.dataModel = weatherDataModel
         weatherViewController.delegate = self
         configureLocationManager()
         configureRootViewController()
@@ -61,20 +64,6 @@ class AppDirector: UIWindow {
         guard let storedKey = NSDictionary(contentsOf: plist) as? [String: Any] else {fatalError()}
         guard let apiKey = storedKey["APIKey"] as? String else {fatalError()}
         return apiKey
-    }
-    
-    ///Loads the country codes from storage.
-    func configureCountryCodes(_ bundle: Bundle = Bundle.main) -> ([String], [String]) {
-        var countryCodes = ([String](), [String]())
-        guard let url = bundle.url(forResource: "countryCodes", withExtension: "json") else {fatalError()}
-        guard let data = try? Data(contentsOf: url) else {fatalError()}
-        guard let json = try? JSONSerialization.jsonObject(with: data, options: []), let results = json as? [Any] else {fatalError()}
-        for countryCode in results {
-            guard let countryCode = countryCode as? [String: String] else {continue}
-            countryCodes.0.append(countryCode["Code"]!)
-            countryCodes.1.append(countryCode["Name"]!)
-        }
-        return countryCodes
     }
     
     ///Configures Location Manager
@@ -150,26 +139,26 @@ class AppDirector: UIWindow {
         //Update model with temperature
         if let main = results["main"] as? [String: Any] {
             if let temperature = main["temp"] as? Double {
-                dataModel.temperature = temperature
+                weatherDataModel.temperature = temperature
             }
             else {
-                dataModel.temperature = 0
+                weatherDataModel.temperature = 0
             }
         }
         
         //Update model with wind speed and direction
         if let wind = results["wind"] as? [String: Any] {
             if let windSpeed = wind["speed"] as? Double {
-                dataModel.windSpeed = windSpeed
+                weatherDataModel.windSpeed = windSpeed
             }
             else {
-                dataModel.windSpeed = 0
+                weatherDataModel.windSpeed = 0
             }
             if let windDirection = wind["deg"] as? Double {
-                dataModel.setWindDirection(windDirection)
+                weatherDataModel.setWindDirection(windDirection)
             }
             else {
-                dataModel.setWindDirection(0.0)
+                weatherDataModel.setWindDirection(0.0)
             }
         }
         
@@ -177,14 +166,14 @@ class AppDirector: UIWindow {
         if let weather = results["weather"] as? [Any] {
             if let firstWeatherEntry = weather[0] as? [String: Any] {
                 if let condition = firstWeatherEntry["id"] as? Int {
-                    dataModel.setWeatherIconName(condition)
+                    weatherDataModel.setWeatherIconName(condition)
                 }
             }
         }
         
         //Update model with city name
         if let city = results["name"] as? String {
-            dataModel.city = city
+            weatherDataModel.city = city
         }
         
         weatherViewController.updateUI()
@@ -201,9 +190,8 @@ extension AppDirector: WeatherControllerDelegate {
 
 //MARK:- Change City Controller Extension
 extension AppDirector: ChangeCityControllerDelegate {
-    func getCountryKeys() -> [String] {return countryCodes.0}
-    func getCountryValues() -> [String] {return countryCodes.1}
     func changeCityName(city: String) {fetchAPIWeatherData(using: ["q": city])}
+    func changeCountryCode(code: String) {changeCityDataModel.currentCountryCode = code}
 }
 
 //MARK:- Location Manager Delegate

@@ -8,9 +8,8 @@
 import UIKit
 
 protocol ChangeCityControllerDelegate {
-    func getCountryKeys() -> [String]
-    func getCountryValues() -> [String]
     func changeCityName(city: String)
+    func changeCountryCode(code: String)
 }
 
 class ChangeCityViewController: UIViewController {
@@ -20,21 +19,16 @@ class ChangeCityViewController: UIViewController {
     @IBOutlet weak var getWeatherButton: UIButton!
     
     var delegate: ChangeCityControllerDelegate!
-    ///Current ISO country code.
-    var countryCode: String = "GB"
-    ///ISO country codes.
-    var countryKeys: [String]!
-    ///Associated full names for ISO country codes.
-    var countryValues: [String]!
+    var dataModel: ChangeCityDataModel!
     
-    convenience init(_ delegate: ChangeCityControllerDelegate) {
+    convenience init(_ delegate: ChangeCityControllerDelegate, dataModel: ChangeCityDataModel) {
         self.init()
         self.delegate = delegate
+        self.dataModel = dataModel
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCountryCodes()
         configureTextField()
         confgiureCountryPicker()
         configureGestures()
@@ -68,7 +62,7 @@ class ChangeCityViewController: UIViewController {
     
     ///Changes the city name correcting for country and navigates back to weather conditions.
     private func changeCityName(_ cityName: String) {
-        let city = cityName.trimmingCharacters(in: .whitespaces).appending(", \(countryCode)")
+        let city = cityName.trimmingCharacters(in: .whitespaces).appending(", \(dataModel.currentCountryCode)")
         delegate.changeCityName(city: city)
         dismissKeyboard()
         dismiss(animated: true, completion: nil)
@@ -82,16 +76,11 @@ class ChangeCityViewController: UIViewController {
         changeCityTextfield.text = ""
     }
     
-    private func configureCountryCodes() {
-        countryKeys = delegate.getCountryKeys()
-        countryValues = delegate.getCountryValues()
-    }
-    
     private func confgiureCountryPicker(_ locale: Locale = Locale.current) {
         guard let region = locale.regionCode else {return}
-        for i in 0..<countryKeys.count {
-            if countryKeys[i] == region {
-                countryCode = region
+        for i in 0..<dataModel.countryCodes.codes.count {
+            if dataModel.countryCodes.codes[i] == region {
+                dataModel.currentCountryCode = region
                 countryPicker.selectRow(i, inComponent: 0, animated: false)
                 return
             }
@@ -112,13 +101,13 @@ class ChangeCityViewController: UIViewController {
 extension ChangeCityViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {return countryValues.count}
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {return dataModel.countryCodes.titles.count}
 }
 
 extension ChangeCityViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {return 80.0}
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {countryCode = countryKeys[row]}
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {dataModel.currentCountryCode = dataModel.countryCodes.codes[row]}
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label: UILabel
@@ -132,7 +121,7 @@ extension ChangeCityViewController: UIPickerViewDelegate {
         
         let attributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
                           NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 30.0)!]
-        label.attributedText = NSAttributedString(string: countryValues[row], attributes: attributes)
+        label.attributedText = NSAttributedString(string: dataModel.countryCodes.titles[row], attributes: attributes)
         label.textAlignment = .center
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
