@@ -1,5 +1,5 @@
 //
-//  ChangeCityViewControllerTests.swift
+//  AppDirectorUnitTests.swift
 //  Weather HereTests
 //
 //  Copyright © 2018 Emerald River. All rights reserved.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import Weather_Here
 
-class ChangeCityViewControllerTests: XCTestCase {
+class AppDirectorUnitTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

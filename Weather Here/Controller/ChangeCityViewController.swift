@@ -14,15 +14,18 @@ protocol ChangeCityControllerDelegate {
 }
 
 class ChangeCityViewController: UIViewController {
-
+    
     @IBOutlet weak var changeCityTextfield: UITextField!
     @IBOutlet weak var countryPicker: UIPickerView!
     @IBOutlet weak var getWeatherButton: UIButton!
     
-    var countryCode: String = "GB"
-    var countryKeys: [String]!
-    var countryValues: [String]!
     var delegate: ChangeCityControllerDelegate!
+    ///Current ISO country code.
+    var countryCode: String = "GB"
+    ///ISO country codes.
+    var countryKeys: [String]!
+    ///Associated full names for ISO country codes.
+    var countryValues: [String]!
     
     convenience init(_ delegate: ChangeCityControllerDelegate) {
         self.init()
@@ -113,7 +116,6 @@ extension ChangeCityViewController: UIPickerViewDataSource {
 }
 
 extension ChangeCityViewController: UIPickerViewDelegate {
-    
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {return 80.0}
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {countryCode = countryKeys[row]}

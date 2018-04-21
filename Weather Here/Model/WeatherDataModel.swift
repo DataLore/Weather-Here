@@ -8,7 +8,7 @@
 import UIKit
 
 class WeatherDataModel {
-    
+
     ///Current temperature.
     var temperature: Int = 0
     ///Current wind speed.
@@ -78,11 +78,11 @@ class WeatherDataModel {
         case 123.76...146.25:
             windDirection = "SE"
         case 146.26...168.75:
-            windDirection = "SEE"
+            windDirection = "SSE"
         case 168.76...191.25:
             windDirection = "S"
         case 191.26...213.75:
-            windDirection = "SWS"
+            windDirection = "SSW"
         case 213.76...236.25:
             windDirection = "SW"
         case 236.26...258.76:

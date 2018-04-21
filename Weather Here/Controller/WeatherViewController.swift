@@ -15,7 +15,7 @@ protocol WeatherControllerDelegate {
 }
 
 class WeatherViewController: UIViewController {
-    
+
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!

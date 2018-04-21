@@ -2,11 +2,11 @@
 //  WeatherDataModelTests.swift
 //  Weather HereTests
 //
-//  Created by Phil Pepper on 19/04/2018.
 //  Copyright © 2018 Emerald River. All rights reserved.
 //
 
 import XCTest
+@testable import Weather_Here
 
 class WeatherDataModelTests: XCTestCase {
     

@@ -10,7 +10,7 @@ import CoreLocation
 import SwiftSpinner
 
 class AppDirector: UIWindow {
-    
+
     let dataModel: WeatherDataModel
     let locationManager: CLLocationManager
     let mainStoryboard: UIStoryboard
@@ -25,15 +25,15 @@ class AppDirector: UIWindow {
     lazy var apiKey: String = {return self.configureAPIKey()}()
     lazy var countryCodes: ([String], [String]) = {return self.configureCountryCodes()}()
     
-    init() {
+    init(bundle: Bundle = Bundle.main, screen: UIScreen = UIScreen.main) {
         //AppDirector Setup
         dataModel = WeatherDataModel()
         locationManager = CLLocationManager()
-        mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        mainStoryboard = UIStoryboard(name: "Main", bundle: bundle)
         weatherViewController = mainStoryboard.instantiateViewController(withIdentifier: "weatherView") as! WeatherViewController
         
         //UIWindow Setup
-        super.init(frame: UIScreen.main.bounds)
+        super.init(frame: screen.bounds)
         
         //Finalise Setup
         weatherViewController.dataModel = dataModel
@@ -159,8 +159,14 @@ class AppDirector: UIWindow {
             if let windSpeed = wind["speed"] as? Double {
                 dataModel.windSpeed = Int(windSpeed)
             }
+            else {
+                dataModel.windSpeed = 0
+            }
             if let windDirection = wind["deg"] as? Double {
                 dataModel.setWindDirection(windDirection)
+            }
+            else {
+                dataModel.setWindDirection(0.0)
             }
         }
         
