@@ -23,22 +23,21 @@ class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
-    private (set) var urlSession: URLSessionProtocol!
+    private var delegate: WeatherControllerDelegate!
     private var urlRequest: URLRequest?
     private var responseData: Data?
+
     var weatherDataModel: WeatherDataModel!
-    var delegate: WeatherControllerDelegate!
+
     
-    convenience init(_ delegate: WeatherControllerDelegate, urlSession: URLSession) {
+    convenience init(_ delegate: WeatherControllerDelegate) {
         self.init()
         self.delegate = delegate
-        self.urlSession = urlSession
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDataModel()
-        configureInjection()
         configureLocationManager()
     }
     
@@ -55,10 +54,6 @@ class WeatherViewController: UIViewController {
     //MARK:- Confgiure
     func configureDataModel() {
         weatherDataModel = WeatherDataModel()
-    }
-    
-    func configureInjection() {
-        urlSession = URLSession.shared
     }
     
     func configureLocationManager() {
@@ -94,7 +89,7 @@ class WeatherViewController: UIViewController {
     /**
      Fetches weather data from the weather API.
      */
-    func fetchWeatherData() {
+    func fetchWeatherData(_ urlSession: URLSession = URLSession.shared) {
         guard urlRequest != nil else {
             print("Unable to Locate API Request")
             return
