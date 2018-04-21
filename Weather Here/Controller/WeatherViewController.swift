@@ -23,21 +23,20 @@ class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
-    private var delegate: WeatherControllerDelegate!
     private var urlRequest: URLRequest?
     private var responseData: Data?
 
-    var weatherDataModel: WeatherDataModel!
-
+    var delegate: WeatherControllerDelegate!
+    var dataModel: WeatherDataModel!
     
-    convenience init(_ delegate: WeatherControllerDelegate) {
+    convenience init(_ delegate: WeatherControllerDelegate, dataModel: WeatherDataModel) {
         self.init()
         self.delegate = delegate
+        self.dataModel = dataModel
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDataModel()
         configureLocationManager()
     }
     
@@ -52,9 +51,6 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK:- Confgiure
-    func configureDataModel() {
-        weatherDataModel = WeatherDataModel()
-    }
     
     func configureLocationManager() {
         locationManager.delegate = self
@@ -125,26 +121,26 @@ class WeatherViewController: UIViewController {
         
         if let main = results["main"] as? [String: Any] {
             if let temperature = main["temp"] as? Double {
-                weatherDataModel.temperature = Int(temperature)
+                dataModel.temperature = Int(temperature)
             }
         }
         if let wind = results["wind"] as? [String: Any] {
             if let windSpeed = wind["speed"] as? Double {
-                weatherDataModel.windSpeed = Int(windSpeed)
+                dataModel.windSpeed = Int(windSpeed)
             }
             if let windDirection = wind["deg"] as? Double {
-                weatherDataModel.setWindDirection(windDirection)
+                dataModel.setWindDirection(windDirection)
             }
         }
         if let weather = results["weather"] as? [Any] {
             if let firstWeatherEntry = weather[0] as? [String: Any] {
                 if let condition = firstWeatherEntry["id"] as? Int {
-                    weatherDataModel.setWeatherIconName(condition)
+                    dataModel.setWeatherIconName(condition)
                 }
             }
         }
         if let city = results["name"] as? String {
-            weatherDataModel.city = city
+            dataModel.city = city
         }
         
         SwiftSpinner.hide()
@@ -155,10 +151,10 @@ class WeatherViewController: UIViewController {
     ///Updates the UI useing the data model.
     func updateUI() {
         DispatchQueue.main.async {
-            self.temperatureLabel.text = "\(self.weatherDataModel.temperature)°"
-            self.windLabel.text = "\(self.weatherDataModel.windSpeed) kph / \(self.weatherDataModel.windDirection)"
-            self.weatherIcon.image = UIImage(named: self.weatherDataModel.weatherIconName)
-            self.cityLabel.text = self.weatherDataModel.city
+            self.temperatureLabel.text = "\(self.dataModel.temperature)°"
+            self.windLabel.text = "\(self.dataModel.windSpeed) kph / \(self.dataModel.windDirection)"
+            self.weatherIcon.image = UIImage(named: self.dataModel.weatherIconName)
+            self.cityLabel.text = self.dataModel.city
         }
     }
     

@@ -34,6 +34,7 @@ class AppDirector: UIWindow {
         
         //Finalise Setup
         weatherViewController.delegate = self
+        weatherViewController.dataModel = dataModel
         configureRootViewController()
         self.makeKeyAndVisible()
     }
@@ -72,11 +73,13 @@ class AppDirector: UIWindow {
     }
 }
 
+//MARK:- Weather Controller Extension
 extension AppDirector: WeatherControllerDelegate {
     func getAPIKey() -> String {return self.apiKey}
     func presentChangeCity() {self.rootViewController?.present(changeCityViewController, animated: true, completion: nil)}
 }
 
+//MARK:- Change City Controller Extension
 extension AppDirector: ChangeCityControllerDelegate {
     func getCountryKeys() -> [String] {return countryCodes.0}
     func getCountryValues() -> [String] {return countryCodes.1}

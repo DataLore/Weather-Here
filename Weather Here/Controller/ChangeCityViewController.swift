@@ -24,6 +24,11 @@ class ChangeCityViewController: UIViewController {
     var countryValues: [String]!
     var delegate: ChangeCityControllerDelegate!
     
+    convenience init(_ delegate: ChangeCityControllerDelegate) {
+        self.init()
+        self.delegate = delegate
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCountryCodes()
