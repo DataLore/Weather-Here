@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,9 +45,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m34-6C-KHO" userLabel="Wind">
-                                <rect key="frame" x="16" y="197" width="288" height="50"/>
+                                <rect key="frame" x="58" y="197" width="204" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" placeholder="YES" id="8R7-JV-OJP"/>
+                                    <constraint firstAttribute="height" constant="50" placeholder="YES" id="Y8c-u9-Kqa"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="54"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,27 +68,47 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compassIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Bba-up-f8t">
+                                <rect key="frame" x="264" y="205" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" placeholder="YES" id="10C-oD-Ksh"/>
+                                    <constraint firstAttribute="width" constant="40" placeholder="YES" id="Auz-fL-bhE"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="windIcon" translatesAutoresizingMaskIntoConstraints="NO" id="DAy-aT-z6j">
+                                <rect key="frame" x="16" y="207" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" placeholder="YES" id="DJz-y5-5c5"/>
+                                    <constraint firstAttribute="height" constant="40" placeholder="YES" id="rHW-Yr-1iF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Trh-Ou-8Dk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="2AD-5b-bhN"/>
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Ze-gs-qga"/>
+                            <constraint firstItem="DAy-aT-z6j" firstAttribute="width" secondItem="m34-6C-KHO" secondAttribute="height" multiplier="4:5" id="6J4-AW-bHc"/>
                             <constraint firstItem="FyE-My-kNt" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="A7j-qx-Mc1"/>
+                            <constraint firstItem="m34-6C-KHO" firstAttribute="leading" secondItem="DAy-aT-z6j" secondAttribute="trailing" constant="2" id="DN9-x0-gEj"/>
                             <constraint firstItem="FyE-My-kNt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DRO-hX-zlA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Trh-Ou-8Dk" secondAttribute="trailing" constant="16" id="FKK-aN-6XR"/>
-                            <constraint firstItem="FyE-My-kNt" firstAttribute="top" secondItem="m34-6C-KHO" secondAttribute="bottom" constant="8" id="IEE-wy-sMG"/>
-                            <constraint firstItem="m34-6C-KHO" firstAttribute="top" secondItem="ELv-dg-lO4" secondAttribute="bottom" constant="8" id="N0F-T3-ffY"/>
+                            <constraint firstItem="DAy-aT-z6j" firstAttribute="centerY" secondItem="m34-6C-KHO" secondAttribute="centerY" constant="5" id="Gre-8P-Sk1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bba-up-f8t" secondAttribute="trailing" constant="16" id="Pwg-KJ-AXt"/>
+                            <constraint firstItem="FyE-My-kNt" firstAttribute="top" secondItem="m34-6C-KHO" secondAttribute="bottom" constant="8" id="RV0-cj-yMJ"/>
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Shb-tH-UZr"/>
+                            <constraint firstItem="Bba-up-f8t" firstAttribute="centerY" secondItem="m34-6C-KHO" secondAttribute="centerY" constant="3" id="WoG-Ib-18c"/>
+                            <constraint firstItem="Bba-up-f8t" firstAttribute="width" secondItem="m34-6C-KHO" secondAttribute="height" multiplier="4:5" id="Y9d-1n-siW"/>
+                            <constraint firstItem="m34-6C-KHO" firstAttribute="top" secondItem="ELv-dg-lO4" secondAttribute="bottom" constant="8" id="Yvm-v7-e7V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Trh-Ou-8Dk" secondAttribute="bottom" constant="25" id="ZVd-Ow-6lu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Tov-VU-eeJ" secondAttribute="trailing" constant="16" id="a6y-GA-J5u"/>
                             <constraint firstAttribute="bottom" secondItem="oh9-iS-CdF" secondAttribute="bottom" id="bix-p4-YIc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m34-6C-KHO" secondAttribute="trailing" constant="16" id="cc3-9u-ivG"/>
+                            <constraint firstItem="Bba-up-f8t" firstAttribute="leading" secondItem="m34-6C-KHO" secondAttribute="trailing" constant="2" id="cDz-p8-LJq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FyE-My-kNt" secondAttribute="trailing" constant="16" id="fBu-fW-iIu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ELv-dg-lO4" secondAttribute="trailing" constant="16" id="gnc-Ep-acU"/>
                             <constraint firstItem="Tov-VU-eeJ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jvE-45-D5X"/>
                             <constraint firstItem="oh9-iS-CdF" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="opm-MN-qMu"/>
                             <constraint firstItem="ELv-dg-lO4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="t51-8j-z7P"/>
-                            <constraint firstItem="m34-6C-KHO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="uXD-Dh-2un"/>
+                            <constraint firstItem="DAy-aT-z6j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="xyu-Pb-aok"/>
                             <constraint firstItem="Trh-Ou-8Dk" firstAttribute="top" secondItem="FyE-My-kNt" secondAttribute="bottom" constant="8" id="y0k-pc-IRI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -101,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="116.74876847290641"/>
+            <point key="canvasLocation" x="114.375" y="116.19718309859155"/>
         </scene>
         <!--Change City-->
         <scene sceneID="U7s-r0-zUV">
@@ -190,7 +211,9 @@
     <resources>
         <image name="back" width="32" height="32"/>
         <image name="city" width="600" height="399"/>
+        <image name="compassIcon" width="40" height="40"/>
         <image name="switch" width="64" height="64"/>
         <image name="weather" width="500" height="755"/>
+        <image name="windIcon" width="40" height="40"/>
     </resources>
 </document>

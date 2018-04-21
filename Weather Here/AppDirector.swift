@@ -227,16 +227,3 @@ extension AppDirector: CLLocationManagerDelegate {
         weatherViewController.updateUI(with: NSLocalizedString("lLocationUnavailable", comment: ""))
     }
 }
-
-//MARK:- Utility Extensions
-extension Formatter {
-    static let decimalFormatter = NumberFormatter()
-}
-
-extension Double {
-    func decimalPlaces(_ places: Int) -> String {
-        Formatter.decimalFormatter.minimumFractionDigits = places
-        Formatter.decimalFormatter.maximumFractionDigits = places
-        return Formatter.decimalFormatter.string(from: NSNumber(value: self))!
-    }
-}

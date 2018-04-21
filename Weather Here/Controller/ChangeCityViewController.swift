@@ -108,7 +108,7 @@ class ChangeCityViewController: UIViewController {
     }
 }
 
-//MARK:- UIPicker Extensions
+//MARK:- UIPicker Extension
 extension ChangeCityViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {return 1}
     

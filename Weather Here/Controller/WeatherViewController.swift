@@ -31,10 +31,6 @@ class WeatherViewController: UIViewController {
         self.dataModel = dataModel
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             delegate.refreshGPS()
@@ -51,8 +47,8 @@ class WeatherViewController: UIViewController {
     func updateUI() {
         DispatchQueue.main.async {
             SwiftSpinner.hide()
-            self.temperatureLabel.text = "\(self.dataModel.temperature.decimalPlaces(1))°"
-            self.windLabel.text = "\(self.dataModel.windSpeed.decimalPlaces(1)) m/s │ \(self.dataModel.windDirection)"
+            self.temperatureLabel.text = "\(String(format: "%.1f", self.dataModel.temperature))°"
+            self.windLabel.text = "\(String(format: "%.1f", self.dataModel.windSpeed)) m/s  \(self.dataModel.windDirection)"
             self.weatherIcon.image = UIImage(named: self.dataModel.weatherIconName)
             self.cityLabel.text = self.dataModel.city
         }
