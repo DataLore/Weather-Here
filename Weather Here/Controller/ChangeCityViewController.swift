@@ -16,7 +16,6 @@ protocol ChangeCityControllerDelegate {
 class ChangeCityViewController: UIViewController {
 
     @IBOutlet weak var changeCityTextfield: UITextField!
-    @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var countryPicker: UIPickerView!
     @IBOutlet weak var getWeatherButton: UIButton!
     
@@ -36,7 +35,7 @@ class ChangeCityViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reconfigureTextField()
+        configureTextField()
     }
         
     @objc private func dismissKeyboard() {view.endEditing(true)}
@@ -45,7 +44,9 @@ class ChangeCityViewController: UIViewController {
     ///Triggers city name change.
     @IBAction func getWeatherButtonTapped(sender: UIButton) {
         guard let cityName = changeCityTextfield.text, !cityName.isEmpty else {
-            warningLabel.text = NSLocalizedString("lWarningLabel", comment: "")
+            let attributes = [NSAttributedStringKey.foregroundColor: UIColor.red,
+                              NSAttributedStringKey.font: changeCityTextfield.font!]
+            changeCityTextfield.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("lWarningLabel", comment: ""), attributes: attributes)
             return
         }
         changeCityName(cityName)
@@ -59,21 +60,17 @@ class ChangeCityViewController: UIViewController {
     
     ///Changes the city name correcting for country and navigates back to weather conditions.
     private func changeCityName(_ cityName: String) {
-        var newCityName = ""
-        if !cityName.contains(",") {
-            newCityName = cityName.trimmingCharacters(in: .whitespaces).appending(", \(countryCode)")
-        }
-        else {
-            newCityName = cityName
-        }
-        delegate.changeCityName(city: newCityName)
+        delegate.changeCityName(city: cityName.trimmingCharacters(in: .whitespaces))
         dismissKeyboard()
         dismiss(animated: true, completion: nil)
     }
     
     //MARK:- Configure
     private func configureTextField() {
-        changeCityTextfield.placeholder = NSLocalizedString("lEnterCityNameTextField", comment: "")
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.lightGray,
+                          NSAttributedStringKey.font: changeCityTextfield.font!]
+        changeCityTextfield.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("lEnterCityNameTextField", comment: ""), attributes: attributes)
+        changeCityTextfield.text = ""
     }
     
     private func configureCountryCodes() {
@@ -98,10 +95,6 @@ class ChangeCityViewController: UIViewController {
     
     private func configureButtons() {
         getWeatherButton.setTitle(NSLocalizedString("lGetWeatherButton", comment: ""), for: .normal)
-    }
-    
-    private func reconfigureTextField() {
-        changeCityTextfield.text = ""
     }
 }
 

@@ -11,6 +11,6 @@
 "lConnectionError" = "Connection Error";
 
 //ChangeCityView
-"lWarningLabel" = "Please Enter a City Name Below";
-"lEnterCityNameTextField" = "Enter City Name";
+"lWarningLabel" = "Please Enter a City Name";
+"lEnterCityNameTextField" = "Enter a City Name";
 "lGetWeatherButton" = "Get Weather";
