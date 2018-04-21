@@ -192,6 +192,7 @@ class AppDirector: UIWindow {
 extension AppDirector: WeatherControllerDelegate {
     func getAPIKey() -> String {return self.apiKey}
     func presentChangeCity() {self.rootViewController?.present(changeCityViewController, animated: true, completion: nil)}
+    func refreshGPS() {configureLocationManager()}
 }
 
 //MARK:- Change City Controller Extension
@@ -199,7 +200,6 @@ extension AppDirector: ChangeCityControllerDelegate {
     func getCountryKeys() -> [String] {return countryCodes.0}
     func getCountryValues() -> [String] {return countryCodes.1}
     func changeCityName(city: String) {fetchAPIWeatherData(using: ["q": city])}
-        //weatherViewController.changeCityName(city: city)
 }
 
 //MARK:- Location Manager Delegate

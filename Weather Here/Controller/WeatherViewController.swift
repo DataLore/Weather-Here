@@ -12,6 +12,7 @@ import SwiftSpinner
 protocol WeatherControllerDelegate {
     func getAPIKey() -> String
     func presentChangeCity()
+    func refreshGPS()
 }
 
 class WeatherViewController: UIViewController {
@@ -32,6 +33,12 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            delegate.refreshGPS()
+        }
     }
     
     //MARK:- IBActions
