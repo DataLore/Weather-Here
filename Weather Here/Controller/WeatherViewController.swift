@@ -11,6 +11,7 @@ import SwiftSpinner
 
 protocol WeatherControllerDelegate {
     func getAPIKey() -> String
+    func presentSettings()
     func presentChangeCity()
     func refreshGPS()
 }
@@ -59,9 +60,8 @@ class WeatherViewController: UIViewController {
     }
     
     //MARK:- IBActions
-    @IBAction func changeCityButtonTapped(_ sender: UIButton) {
-        delegate.presentChangeCity()
-    }
+    @IBAction func settingsButtonTapped(_ sender: UIButton) {delegate.presentSettings()}
+    @IBAction func changeCityButtonTapped(_ sender: UIButton) {delegate.presentChangeCity()}
 
     //MARK:- UI
     ///Updates the UI using the data model.

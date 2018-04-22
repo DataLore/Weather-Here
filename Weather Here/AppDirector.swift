@@ -17,6 +17,12 @@ class AppDirector: UIWindow {
     let mainStoryboard: UIStoryboard
     let weatherViewController: WeatherViewController
     
+    lazy var settingsViewController: SettingsViewController = {
+        let settingsViewController = self.mainStoryboard.instantiateViewController(withIdentifier: "settingsView") as! SettingsViewController
+        settingsViewController.delegate = self
+        return settingsViewController
+    }()
+    
     lazy var changeCityViewController: ChangeCityViewController = {
         let changeCityViewController = self.mainStoryboard.instantiateViewController(withIdentifier: "changeCityView") as! ChangeCityViewController
         changeCityViewController.delegate = self
@@ -25,7 +31,6 @@ class AppDirector: UIWindow {
     }()
     
     lazy var apiKey: String = {return self.configureAPIKey()}()
-
     
     init(bundle: Bundle = Bundle.main, screen: UIScreen = UIScreen.main) {
         //AppDirector Setup
@@ -182,8 +187,13 @@ class AppDirector: UIWindow {
 }
 
 //MARK:- Weather Controller Extension
+extension AppDirector: SettingsControllerDelegate {
+    
+}
+
 extension AppDirector: WeatherControllerDelegate {
     func getAPIKey() -> String {return self.apiKey}
+    func presentSettings() {self.rootViewController?.present(settingsViewController, animated: true, completion: nil)}
     func presentChangeCity() {self.rootViewController?.present(changeCityViewController, animated: true, completion: nil)}
     func refreshGPS() {configureLocationManager()}
 }
