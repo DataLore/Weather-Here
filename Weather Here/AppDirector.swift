@@ -144,20 +144,20 @@ class AppDirector: UIWindow {
         //Update model with temperature
         if let main = results["main"] as? [String: Any] {
             if let temperature = main["temp"] as? Double {
-                weatherDataModel.temperature = temperature
+                weatherDataModel.temperature = Measurement(value: temperature, unit: UnitTemperature.celsius)
             }
             else {
-                weatherDataModel.temperature = 0
+                weatherDataModel.temperature = Measurement(value: 0.0, unit: UnitTemperature.celsius)
             }
         }
         
         //Update model with wind speed and direction
         if let wind = results["wind"] as? [String: Any] {
             if let windSpeed = wind["speed"] as? Double {
-                weatherDataModel.windSpeed = windSpeed
+                weatherDataModel.windSpeed = Measurement(value: windSpeed, unit: UnitSpeed.metersPerSecond)
             }
             else {
-                weatherDataModel.windSpeed = 0
+                weatherDataModel.windSpeed = Measurement(value: 0.0, unit: UnitSpeed.metersPerSecond)
             }
             if let windDirection = wind["deg"] as? Double {
                 weatherDataModel.setWindDirection(windDirection)

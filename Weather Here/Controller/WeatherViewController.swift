@@ -24,6 +24,12 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
 
+    let measurementFormatter: MeasurementFormatter = {
+        let measurementFormatter = MeasurementFormatter()
+        measurementFormatter.numberFormatter.maximumFractionDigits = 1
+        return measurementFormatter
+    }()
+    
     var delegate: WeatherControllerDelegate!
     var dataModel: WeatherDataModel!
     
@@ -32,15 +38,18 @@ class WeatherViewController: UIViewController {
         self.delegate = delegate
         self.dataModel = dataModel
     }
-
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             delegate.refreshGPS()
         }
     }
     
+    private func createTemperatureText() -> String {
+        return measurementFormatter.string(from: dataModel.temperature)
+    }
+    
     private func createWindSpeedText() -> NSAttributedString {
-        let wind = NSMutableAttributedString(string: "\(String(format: "%.1f", self.dataModel.windSpeed)) m/s ")
+        let wind = NSMutableAttributedString(string: measurementFormatter.string(from: dataModel.windSpeed))
         let windImage = NSTextAttachment()
         windImage.image = UIImage(named: "windIcon.png")
         let windImageText = NSAttributedString(attachment: windImage)
@@ -50,7 +59,7 @@ class WeatherViewController: UIViewController {
     }
     
     private func createWindDirectionText() -> NSAttributedString {
-        let windDirection = NSMutableAttributedString(string: "\(self.dataModel.windDirection) ")
+        let windDirection = NSMutableAttributedString(string: "\(dataModel.windDirection) ")
         let windDirectionImage = NSTextAttachment()
         windDirectionImage.image = UIImage(named: "compassIcon.png")
         let windDirectionImageText = NSAttributedString(attachment: windDirectionImage)
@@ -68,7 +77,7 @@ class WeatherViewController: UIViewController {
     func updateUI() {
         DispatchQueue.main.async {
             SwiftSpinner.hide()
-            self.temperatureLabel.text = "\(String(format: "%.1f", self.dataModel.temperature))°"
+            self.temperatureLabel.text = self.createTemperatureText()
             self.windSpeedLabel.attributedText = self.createWindSpeedText()
             self.windDirectionLabel.attributedText = self.createWindDirectionText()
             self.weatherIcon.image = UIImage(named: self.dataModel.weatherIconName)
