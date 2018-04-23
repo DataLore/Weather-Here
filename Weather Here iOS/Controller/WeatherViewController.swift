@@ -10,7 +10,6 @@ import CoreLocation
 import SwiftSpinner
 
 protocol WeatherControllerDelegate {
-    func getAPIKey() -> String
     func presentSettings()
     func presentChangeCity()
     func refreshGPS()
@@ -38,6 +37,7 @@ class WeatherViewController: UIViewController {
         self.delegate = delegate
         self.dataModel = dataModel
     }
+    
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             delegate.refreshGPS()

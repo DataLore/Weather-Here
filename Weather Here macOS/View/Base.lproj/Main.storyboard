@@ -722,20 +722,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQ2-a7-XQ1" userLabel="Condition">
-                                <rect key="frame" x="18" y="62" width="464" height="311"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="kUD-e5-KYm"/>
-                            </imageView>
-                            <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90f-ah-xl9">
-                                <rect key="frame" x="85" y="20" width="330" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="City Search" usesSingleLineMode="YES" bezelStyle="round" id="dcH-5C-HHY">
-                                    <font key="font" size="14" name="HelveticaNeue"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </searchFieldCell>
-                            </searchField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g5f-zQ-aXd" userLabel="Temperature">
                                 <rect key="frame" x="18" y="493" width="464" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -763,6 +749,35 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mQ2-a7-XQ1" userLabel="Weather Icon">
+                                <rect key="frame" x="18" y="62" width="464" height="311"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="kUD-e5-KYm"/>
+                            </imageView>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WTW-6k-lHF" userLabel="Country">
+                                <rect key="frame" x="16" y="17" width="178" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Country" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ow3-1M-h7C" id="H2C-MG-jTP">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="FTZ-yh-wYP">
+                                        <items>
+                                            <menuItem title="Country" state="on" id="ow3-1M-h7C"/>
+                                            <menuItem title="Item 2" id="lKX-UH-Eaq"/>
+                                            <menuItem title="Item 3" id="PvV-gE-BLV"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="90f-ah-xl9" userLabel="City Name Search">
+                                <rect key="frame" x="199" y="20" width="281" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="City Search" usesSingleLineMode="YES" bezelStyle="round" id="dcH-5C-HHY">
+                                    <font key="font" size="14" name="HelveticaNeue"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                            </searchField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="CBh-Or-fJH" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="0KC-Wv-RNI"/>
@@ -774,6 +789,15 @@
                             <constraint firstItem="Bhv-VI-YV8" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="ziT-z6-diF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="CBh-Or-fJH" id="dtv-iZ-X7L"/>
+                        <outlet property="cityNameSearch" destination="90f-ah-xl9" id="ATT-gy-Os3"/>
+                        <outlet property="countryPicker" destination="WTW-6k-lHF" id="H2z-1p-01l"/>
+                        <outlet property="temperatureLabel" destination="g5f-zQ-aXd" id="7ZO-CK-uvm"/>
+                        <outlet property="weatherIcon" destination="mQ2-a7-XQ1" id="9El-9f-ze3"/>
+                        <outlet property="windDirectionLabel" destination="pb1-LM-Qkl" id="dQ2-GT-pJq"/>
+                        <outlet property="windSpeedLabel" destination="YHc-cO-EfP" id="dd0-kn-M1M"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
