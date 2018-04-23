@@ -4,7 +4,8 @@
 //
 //  Copyright © 2018 Emerald River. All rights reserved.
 //
-import UIKit
+
+import Foundation
 
 class ChangeCityDataModel {
     

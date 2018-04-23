@@ -49,7 +49,7 @@ class WeatherViewController: UIViewController {
     }
     
     private func createWindSpeedText() -> NSAttributedString {
-        let wind = NSMutableAttributedString(string: measurementFormatter.string(from: dataModel.windSpeed))
+        let wind = NSMutableAttributedString(string: "\(measurementFormatter.string(from: dataModel.windSpeed)) ")
         let windImage = NSTextAttachment()
         windImage.image = UIImage(named: "windIcon.png")
         let windImageText = NSAttributedString(attachment: windImage)
@@ -73,27 +73,27 @@ class WeatherViewController: UIViewController {
     @IBAction func changeCityButtonTapped(_ sender: UIButton) {delegate.presentChangeCity()}
 
     //MARK:- UI
-    ///Updates the UI using the data model.
-    func updateUI() {
-        DispatchQueue.main.async {
-            SwiftSpinner.hide()
-            self.temperatureLabel.text = self.createTemperatureText()
-            self.windSpeedLabel.attributedText = self.createWindSpeedText()
-            self.windDirectionLabel.attributedText = self.createWindDirectionText()
-            self.weatherIcon.image = UIImage(named: self.dataModel.weatherIconName)
-            self.cityLabel.text = self.dataModel.city
-        }
-    }
-    
     /**
-    Updates the UI with an error message.
+    Updates the UI with or without an error message.
  
-    - parameter error: The error message to display.
+    - parameter error: The error message to display if there is one.
     */
-    func updateUI(with error: String) {
-        DispatchQueue.main.async {
-            SwiftSpinner.hide()
-            self.cityLabel.text = error
+    func updateUI(with error: String?) {
+        if let error = error {
+            DispatchQueue.main.async {
+                SwiftSpinner.hide()
+                self.cityLabel.text = error
+            }
+        }
+        else {
+            DispatchQueue.main.async {
+                SwiftSpinner.hide()
+                self.temperatureLabel.text = self.createTemperatureText()
+                self.windSpeedLabel.attributedText = self.createWindSpeedText()
+                self.windDirectionLabel.attributedText = self.createWindDirectionText()
+                self.weatherIcon.image = UIImage(named: self.dataModel.weatherIconName)
+                self.cityLabel.text = self.dataModel.city
+            }
         }
     }
 }
