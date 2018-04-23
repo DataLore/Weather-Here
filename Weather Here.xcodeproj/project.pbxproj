@@ -216,8 +216,7 @@
 				4A3843282087648700155D88 /* Model */,
 				4A9388CB208803A10057E728 /* Support */,
 			);
-			name = Shared;
-			path = "New Group";
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		4A30298A208D11270004D422 /* View */ = {
