@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Weather Here
+
+  Copyright © 2018 Emerald River. All rights reserved.
+*/
+
+"NSLocationWhenInUseUsageDescription" = "We would like access your current location to get the weather.";
+"NSLocationUsageDescription" = "We would like access your current location to get the weather.";
