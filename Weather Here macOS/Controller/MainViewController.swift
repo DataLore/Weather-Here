@@ -38,6 +38,7 @@ class MainViewController: NSViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        configureElements()
         configureCountryPicker()
     }
 
@@ -50,6 +51,13 @@ class MainViewController: NSViewController {
     @IBAction func countrySelectionChanged(_ sender: NSPopUpButton) {
         guard let newCountrySelection = sender.titleOfSelectedItem else {return}
         changeCityDataModel.currentCountryCode = changeCityDataModel.countryTitlesDictonary[newCountrySelection]!
+    }
+    
+    private func configureElements() {
+        cityLabel.stringValue = ""
+        temperatureLabel.stringValue = ""
+        windSpeedLabel.stringValue = ""
+        windDirectionLabel.stringValue = ""
     }
     
     private func configureCountryPicker(locale: Locale = Locale.current) {
