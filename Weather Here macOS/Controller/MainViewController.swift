@@ -58,6 +58,7 @@ class MainViewController: NSViewController {
         temperatureLabel.stringValue = ""
         windSpeedLabel.stringValue = ""
         windDirectionLabel.stringValue = ""
+        cityNameSearch.placeholderString = NSLocalizedString("lEnterCityNameTextField", comment: "")
     }
     
     private func configureCountryPicker(locale: Locale = Locale.current) {

@@ -764,7 +764,7 @@
                                 <rect key="frame" x="18" y="471" width="464" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" id="Xrc-Ll-WAQ">
-                                    <font key="font" size="40" name="HelveticaNeue-Light"/>
+                                    <font key="font" size="35" name="HelveticaNeue-Light"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -773,7 +773,7 @@
                                 <rect key="frame" x="18" y="415" width="464" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="justified" id="YgY-Mw-yWR">
-                                    <font key="font" size="40" name="HelveticaNeue-Light"/>
+                                    <font key="font" size="35" name="HelveticaNeue-Light"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
