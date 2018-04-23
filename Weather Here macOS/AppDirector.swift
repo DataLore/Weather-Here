@@ -7,44 +7,34 @@
 
 import AppKit
 
-@objc(AppDirector)
-class AppDirector: NSApplication {
+class AppDirector: NSWindowController {
     
-    let projectDirector: ProjectDirector
-    let dataModel: ProjectDataModel
+    var projectDirector: ProjectDirector!
+    var dataModel: ProjectDataModel!
     
-    lazy var mainViewController: MainViewController = {
-        return mainWindow?.windowController?.contentViewController as! MainViewController
-    }()
-    
-    override init() {
-        //Project Director Setup
+    override func windowDidLoad() {
+        super.windowDidLoad()
+        
         projectDirector = ProjectDirector()
+        projectDirector.delegate = self
+        
         dataModel = projectDirector.projectDataModel
         
-        //Application Setup
-        super.init()
-        
-        //Finalise Setup
-        projectDirector.delegate = self
+        let mainViewController = contentViewController as! MainViewController
         mainViewController.delegate = self
         mainViewController.weatherDataModel = projectDirector.weatherDataModel
         mainViewController.changeCityDataModel = projectDirector.changeCityDataModel
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
 }
 
 extension AppDirector: ProjectDirectorDelegate {
     func updateUI(with error: String?) {
+        let mainViewController = contentViewController as! MainViewController
         mainViewController.updateUI(with: error)
     }
 }
 
-extension AppDirector: MainViewControllerDelegate {
+extension AppDirector: MainViewDelegate {
     func changeCityName(city: String) {projectDirector.fetchAPIWeatherData(using: ["q": city])}
     func changeCountryCode(code: String) {projectDirector.changeCityDataModel.currentCountryCode = code}
 }
