@@ -11,11 +11,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="Weather Here macOS" id="1Xt-HY-uBw">
+                            <menuItem title="Weather Here" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Weather Here macOS" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="Weather Here" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About Weather Here macOS" id="5kV-Vb-QxS">
+                                        <menuItem title="About Weather Here" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -29,7 +29,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide Weather Here macOS" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide Weather Here" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -47,7 +47,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit Weather Here macOS" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit Weather Here" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -660,7 +660,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Weather Here macOS Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="Weather Here Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -683,7 +683,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="mainWindow" id="B8D-0N-5wS" customClass="AppDirector" customModule="Weather_Here" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="mainWindow" showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="AppDirector" customModule="Weather_Here" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Weather Here" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
@@ -757,7 +757,7 @@
                                 </constraints>
                                 <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" autoenablesItems="NO" id="H2C-MG-jTP">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu"/>
                                     <menu key="menu" autoenablesItems="NO" id="FTZ-yh-wYP"/>
                                 </popUpButtonCell>
                                 <connections>
